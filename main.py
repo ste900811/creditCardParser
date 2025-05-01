@@ -31,7 +31,11 @@ def main(bankName, statementDate):
   if bankName == "capitalOne":
     assert round(parserObj.statmentPDFBalance - parserObj.PDFCreditsAmount, 2) == round(parserObj.statmentCSVBalance, 2), \
       f"CapitalOne: PDF balance: {parserObj.statmentPDFBalance}, CSV balance: {parserObj.statmentCSVBalance}, Credits amount: {parserObj.PDFCreditsAmount}"
-
+  elif bankName == "discover":
+    assert round(parserObj.statmentPDFBalance, 2) == round(parserObj.statmentCSVBalance, 2), \
+      f"Discover: PDF balance: {parserObj.statmentPDFBalance}, CSV balance: {parserObj.statmentCSVBalance}"
+  else:
+    assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
   parserObj.outputCSVStatement(bankName, statementDate)

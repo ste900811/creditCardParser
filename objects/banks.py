@@ -9,11 +9,11 @@ class Banks:
     self.transactionList = []
 
   @abstractmethod
-  def getStatmentPDFBalance(self):
+  def getStatmentPDFBalance(self, filePath):
     pass
 
   @abstractmethod
-  def getStatmentCSVBalance(self):
+  def getStatmentCSVBalance(self, filePath):
     pass
 
   def outputCSVStatement(self, bankName, date):
