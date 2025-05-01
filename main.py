@@ -29,7 +29,7 @@ def main(bankName, statementDate):
 
   # check if the statement balance from PDF and CSV file are same
   if bankName == "capitalOne":
-    assert parserObj.statmentPDFBalance - parserObj.PDFCreditsAmount == parserObj.statmentCSVBalance, \
+    assert round(parserObj.statmentPDFBalance - parserObj.PDFCreditsAmount, 2) == round(parserObj.statmentCSVBalance, 2), \
       f"CapitalOne: PDF balance: {parserObj.statmentPDFBalance}, CSV balance: {parserObj.statmentCSVBalance}, Credits amount: {parserObj.PDFCreditsAmount}"
 
 
