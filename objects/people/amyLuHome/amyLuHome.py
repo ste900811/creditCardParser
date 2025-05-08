@@ -4,7 +4,8 @@ from objects.people.people import people
 from expensesHandler.AMEXAmyLuEH import expensesHandler as AMEXEH
 
 class amyLuHome(people):
-  def __init__(self):
+  def __init__(self, nameOnStatement):
+    super().__init__(nameOnStatement)
     self.categories = {
       "Phone": 0,
       "Grocery": 0,
@@ -36,9 +37,9 @@ class amyLuHome(people):
     }
     self.categoriesTotal = dict()
 
-  def outputCSVStatement(self, nameOnStatement, bankName, cardType, statementDate):
+  def outputCSVStatement(self, bankObj):
 
-    outputFilePath = f'./statements/{nameOnStatement}/outputFile/{bankName}_{cardType}_{statementDate}.xlsx'
+    outputFilePath = f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.xlsx'
     
     keys = [key for key in self.categories]
     title = ["Month"] + keys

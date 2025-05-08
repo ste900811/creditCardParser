@@ -5,13 +5,14 @@ from expensesHandler.discoverStevenLuEH import expensesHandler as discoverEH
 from expensesHandler.capitalOneStevenLuEH import expensesHandler as captialOneEH
 
 class stevenLuHome(people):
-  def __init__(self):
+  def __init__(self, nameOnStatement):
+    super().__init__(nameOnStatement)
     self.transactionList = []
 
-  def outputCSVStatement(self, personName, bankName, cardType, date):
+  def outputCSVStatement(self, bankObj):
     df = pd.DataFrame(self.transactionList, columns=["日期", "支出項目", "明細", "金額"])
     df.sort_values(by=["日期"], inplace=True)
-    df.to_excel(f'./statements/{personName}/outputFile/{bankName}_{cardType}_{date}.xlsx', index=False)
+    df.to_excel(f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.xlsx', index=False)
 
     return
 

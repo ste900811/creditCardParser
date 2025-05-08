@@ -41,7 +41,7 @@ def main(bankName, cardType, nameOnStatement, statementDate):
     assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
-  personObj.outputCSVStatement(nameOnStatement, bankName, cardType, statementDate)
+  personObj.outputCSVStatement(bankObj)
   return
 
 # Example: python main.py stevenLu discover 250120
