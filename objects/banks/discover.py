@@ -1,4 +1,4 @@
-from objects.banks import Banks
+from objects.banks.banks import Banks
 from pypdf import PdfReader
 import pandas as pd
 from expensesHandler.discoverEH import expensesHandler

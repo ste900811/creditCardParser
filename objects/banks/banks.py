@@ -16,8 +16,8 @@ class Banks:
   def getStatmentCSVBalance(self, filePath):
     pass
 
-  def outputCSVStatement(self, bankName, date):
+  def outputCSVStatement(self, personName, bankName, date):
     print("Banks: outputCSVSatatement")
     df = pd.DataFrame(self.transactionList, columns=["日期", "支出項目", "明細", "金額"])
     df.sort_values(by=["日期"], inplace=True)
-    df.to_excel(f'./statements/outputFile/{bankName}{date}.xlsx', index=False)
+    df.to_excel(f'./statements/{personName}/outputFile/{bankName}{date}.xlsx', index=False)

@@ -1,8 +1,8 @@
 import sys
-from objects.discover import Discover
-from objects.capitalOne import CapitalOne
+from objects.banks.discover import Discover
+from objects.banks.capitalOne import CapitalOne
 
-def main(bankName, statementDate):
+def main(personName, bankName, statementDate):
 
   # create the object of the bank class
   if bankName == "discover":
@@ -15,14 +15,14 @@ def main(bankName, statementDate):
 
   # get the statement balance from PDF file
   try:
-    parserObj.statmentPDFBalance = parserObj.getStatmentPDFBalance(f'./statements/{bankName}/{statementDate}.pdf')
+    parserObj.statmentPDFBalance = parserObj.getStatmentPDFBalance(f'./statements/{personName}/{bankName}/{statementDate}.pdf')
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
   
   # get the statement balance from CSV file
   try:
-    parserObj.statmentCSVBalance = parserObj.getStatmentCSVBalance(f'./statements/{bankName}/{statementDate}.csv')
+    parserObj.statmentCSVBalance = parserObj.getStatmentCSVBalance(f'./statements/{personName}/{bankName}/{statementDate}.csv')
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
@@ -38,18 +38,19 @@ def main(bankName, statementDate):
     assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
-  parserObj.outputCSVStatement(bankName, statementDate)
+  parserObj.outputCSVStatement(personName, bankName, statementDate)
   return
 
+# Example: python main.py stevenLu discover 250120
 if __name__ == "__main__":
 
-  if len(sys.argv) < 3:
+  if len(sys.argv) < 4:
     print("Command line arguments not enough")
     sys.exit(1)
-  elif len(sys.argv) > 3:
+  elif len(sys.argv) > 4:
     print("Command line arguments too many")
     sys.exit(1)
 
-  bankName, statementDate = sys.argv[1], sys.argv[2]
-  main(bankName, statementDate)
+  personName, bankName, statementDate = sys.argv[1], sys.argv[2], sys.argv[3]
+  main(personName, bankName, statementDate)
   print("Done")
