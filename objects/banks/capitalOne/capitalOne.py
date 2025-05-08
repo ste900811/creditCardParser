@@ -1,7 +1,6 @@
 from objects.banks.banks import Banks
 from pypdf import PdfReader
 import pandas as pd
-from expensesHandler.capitalOneStevenLuEH import expensesHandler
 
 class CapitalOne(Banks):
   def __init__(self, bankName, cardType, statementDate):
@@ -40,31 +39,3 @@ class CapitalOne(Banks):
           return float(line[38:39]+line[40:46])
 
     assert False, "CapitalOne: getStatmentPDFBalance: No balance found in PDF file"
-
-  def getStatmentCSVBalance(self, filePath):
-    print("CapitalOne: getStatmentCSVBalance")
-
-    csvTotalAmount = 0.0
-    df = pd.read_csv(filePath)
-
-    for index, row in df.iterrows():
-      if row["Card No."] == 1052 and row["Credit"] > 0:
-        category, detail, amount = expensesHandler(row["Description"].split(" "), -row["Credit"])
-        csvTotalAmount += amount
-      elif row["Card No."] == 1052 and row["Debit"] > 0:
-        category, detail, amount = expensesHandler(row["Description"].split(" "), row["Debit"])
-        csvTotalAmount += amount
-      else:
-        continue
-    
-      if category == False:
-        # print(category, detail)
-        print(row["Description"].split(" "), row["Debit"], row["Credit"])
-        continue
-
-      month, date = row["Transaction Date"][5:].split("-")
-      self.transactionList.append([f'{month}/{date}', category, detail, amount])
-
-    return csvTotalAmount
-
-

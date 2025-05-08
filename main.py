@@ -22,7 +22,7 @@ def main(bankName, cardType, nameOnStatement, statementDate):
   # get the statement balance from CSV file
   try:
     csvFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate}.csv'
-    bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(csvFilePath)
+    bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(csvFilePath, bankName)
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
