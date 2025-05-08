@@ -2,24 +2,27 @@ import sys
 
 from mainFunctions.createObjects import createObjects
 
-def main(personName, bankName, cardType, statementDate):
+def main(bankName, cardType, nameOnStatement, statementDate):
   print(f"Bank Name: {bankName}")
   print(f"Card Type: {cardType}")
-  print(f"Statement Date: {statementDate}")
-  print(f"Person Name: {personName}")
+  print(f"Name on Statement: {nameOnStatement}")
+  print(f"Statement Date: {statementDate}", end="\n\n")
 
-  bankObj, personObj = createObjects(bankName, cardType, statementDate, personName)
+  # create the object of the bank and people class
+  bankObj, personObj = createObjects(bankName, cardType, statementDate, nameOnStatement)
 
   # get the statement balance from PDF file
   try:
-    bankObj.statmentPDFBalance = bankObj.getStatmentPDFBalance(f'./statements/{personName}/{bankName}/{cardType}/{statementDate}.pdf')
+    pdfFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate}.pdf'
+    bankObj.statmentPDFBalance = bankObj.getStatmentPDFBalance(pdfFilePath)
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
   
   # get the statement balance from CSV file
   try:
-    bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(f'./statements/{personName}/{bankName}/{cardType}/{statementDate}.csv')
+    csvFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate}.csv'
+    bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(csvFilePath)
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
@@ -35,7 +38,7 @@ def main(personName, bankName, cardType, statementDate):
     assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
-  personObj.outputCSVStatement(personName, bankName, statementDate)
+  personObj.outputCSVStatement(nameOnStatement, bankName, statementDate)
   return
 
 # Example: python main.py stevenLu discover 250120
@@ -48,6 +51,6 @@ if __name__ == "__main__":
     print("Command line arguments too many")
     sys.exit(1)
 
-  personName, bankName, cardType, statementDate = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-  main(personName, bankName, cardType, statementDate)
+  bankName, cardType, nameOnStatement, statementDate = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+  main(bankName, cardType, nameOnStatement, statementDate)
   print("Done")
