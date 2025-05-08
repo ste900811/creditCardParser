@@ -34,11 +34,14 @@ def main(bankName, cardType, nameOnStatement, statementDate):
   elif bankName == "discover":
     assert round(bankObj.statmentPDFBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
       f"Discover: PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}"
+  elif bankName == "AMEX":
+    assert round(bankObj.statmentPDFBalance - bankObj.previousBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
+      f'{bankObj.bankName}_{bankObj.cardType}: PDF and CSV statement balance do not match'
   else:
     assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
-  personObj.outputCSVStatement(nameOnStatement, bankName, statementDate)
+  personObj.outputCSVStatement(nameOnStatement, bankName, cardType, statementDate)
   return
 
 # Example: python main.py stevenLu discover 250120

@@ -8,10 +8,10 @@ class stevenLuHome(people):
   def __init__(self):
     self.transactionList = []
 
-  def outputCSVStatement(self, personName, bankName, date):
+  def outputCSVStatement(self, personName, bankName, cardType, date):
     df = pd.DataFrame(self.transactionList, columns=["日期", "支出項目", "明細", "金額"])
     df.sort_values(by=["日期"], inplace=True)
-    df.to_excel(f'./statements/{personName}/outputFile/{bankName}{date}.xlsx', index=False)
+    df.to_excel(f'./statements/{personName}/outputFile/{bankName}_{cardType}_{date}.xlsx', index=False)
 
     return
 

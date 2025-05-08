@@ -1,0 +1,100 @@
+import pandas as pd
+
+from objects.people.people import people
+from expensesHandler.AMEXAmyLuEH import expensesHandler as AMEXEH
+
+class amyLuHome(people):
+  def __init__(self):
+    self.categories = {
+      "Phone": 0,
+      "Grocery": 0,
+      "Dining": 0,
+      "Gas": 0,
+      "Charge": 0,
+      "Travel": 0,
+      "Entertainment": 0,
+      "Car Expense": 0,
+      "Parking": 0,
+      "Baby": 0,
+      "Daycare": 0,
+      "CY Class": 0,
+      "RY Class": 0,
+      "Others/YL": 0,
+      "Computer/Cloud": 0,
+      "Other/HY": 0,
+      "Medical Expense": 0,
+      "Bus Exp/Prof Fee": 0,
+      "House Expense": 0,
+      "Amazon": 0,
+      "fcpa": 0,
+      "AMEX FEE": 0,
+      "HOA": 0,
+      "1888 lillian electric": 0,
+      "1333 gas": 0,
+      "Youtube": 0,
+      "Steven": 0,
+    }
+    self.categoriesTotal = dict()
+
+  def outputCSVStatement(self, nameOnStatement, bankName, cardType, statementDate):
+
+    outputFilePath = f'./statements/{nameOnStatement}/outputFile/{bankName}_{cardType}_{statementDate}.xlsx'
+    
+    keys = [key for key in self.categories]
+    title = ["Month"] + keys
+
+    data = []
+    for key, value in self.categoriesTotal.items():
+      tempArray = [key]
+      for k in keys:
+        tempArray.append(value[k])
+      data.append(tempArray)
+    
+    df = pd.DataFrame(data, columns=title)
+    df.sort_values(by=["Month"], inplace=True)
+    df.to_csv(outputFilePath, index=False)
+
+    return
+  
+  def setUpCategories(self, df):
+
+    # Filter out the months
+    month = set()
+    for date in df["Date"]:
+      month.add(date.split("/")[0])
+
+    # Create a dictionary for each month
+    for m in month:
+      self.categoriesTotal[m] = self.categories.copy()
+
+    return
+  
+  def getStatmentCSVBalance(self, filePath, bankName):
+    # print(f"Getting statement balance from CSV file: {filePath}")
+
+    df = pd.read_csv(filePath)
+
+    # Since there are two different months, need to add the two months separately
+    self.setUpCategories(df)
+
+    csvTotalAmount = 0.0    
+    for index, row in df.iterrows():
+      
+      # Update the total amount
+      csvTotalAmount += row["Amount"]
+
+      # Update the categories total amount
+      description = row["Description"].split(" ")
+      if description[0] == "AplPay" or description[0] == "TN":
+        description = description[1:]
+      category = AMEXEH(description, row["Amount"])
+      month = row["Date"].split("/")[0]
+
+      if category == False:
+        print(description, row["Amount"])
+        continue
+
+      self.categoriesTotal[month][category] += row["Amount"]
+
+    return csvTotalAmount
+  

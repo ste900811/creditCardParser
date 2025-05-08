@@ -1,6 +1,5 @@
 from objects.banks.banks import Banks
 from pypdf import PdfReader
-import pandas as pd
 
 class CapitalOne(Banks):
   def __init__(self, bankName, cardType, statementDate):

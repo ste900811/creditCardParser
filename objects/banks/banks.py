@@ -7,6 +7,7 @@ class Banks:
     self.statmentPDFBalance = -1
     self.statmentCSVBalance = -1
     self.StatementDate = statementDate
+    self.bankName = bankName
 
   @abstractmethod
   def getStatmentPDFBalance(self, filePath):
