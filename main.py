@@ -1,56 +1,53 @@
 import sys
-from objects.banks.discover import Discover
-from objects.banks.capitalOne import CapitalOne
 
-def main(personName, bankName, statementDate):
+from mainFunctions.createObjects import createObjects
 
-  # create the object of the bank class
-  if bankName == "discover":
-    parserObj = Discover(statementDate)
-  elif bankName == "capitalOne":
-    parserObj = CapitalOne(statementDate)
-  else:
-    print(f'Bank not supported: {bankName}')
-    sys.exit(1)
+def main(personName, bankName, cardType, statementDate):
+  print(f"Bank Name: {bankName}")
+  print(f"Card Type: {cardType}")
+  print(f"Statement Date: {statementDate}")
+  print(f"Person Name: {personName}")
+
+  bankObj, personObj = createObjects(bankName, cardType, statementDate, personName)
 
   # get the statement balance from PDF file
   try:
-    parserObj.statmentPDFBalance = parserObj.getStatmentPDFBalance(f'./statements/{personName}/{bankName}/{statementDate}.pdf')
+    bankObj.statmentPDFBalance = bankObj.getStatmentPDFBalance(f'./statements/{personName}/{bankName}/{cardType}/{statementDate}.pdf')
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
   
   # get the statement balance from CSV file
   try:
-    parserObj.statmentCSVBalance = parserObj.getStatmentCSVBalance(f'./statements/{personName}/{bankName}/{statementDate}.csv')
+    bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(f'./statements/{personName}/{bankName}/{cardType}/{statementDate}.csv')
   except FileNotFoundError as e:
     print(e)
     sys.exit(1)
 
   # check if the statement balance from PDF and CSV file are same
   if bankName == "capitalOne":
-    assert round(parserObj.statmentPDFBalance - parserObj.PDFCreditsAmount, 2) == round(parserObj.statmentCSVBalance, 2), \
-      f"CapitalOne: PDF balance: {parserObj.statmentPDFBalance}, CSV balance: {parserObj.statmentCSVBalance}, Credits amount: {parserObj.PDFCreditsAmount}"
+    assert round(bankObj.statmentPDFBalance - bankObj.PDFCreditsAmount, 2) == round(bankObj.statmentCSVBalance, 2), \
+      f"CapitalOne: PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}, Credits amount: {bankObj.PDFCreditsAmount}"
   elif bankName == "discover":
-    assert round(parserObj.statmentPDFBalance, 2) == round(parserObj.statmentCSVBalance, 2), \
-      f"Discover: PDF balance: {parserObj.statmentPDFBalance}, CSV balance: {parserObj.statmentCSVBalance}"
+    assert round(bankObj.statmentPDFBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
+      f"Discover: PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}"
   else:
     assert False, f"Bank not supported: {bankName}"
 
   # output CSV file
-  parserObj.outputCSVStatement(personName, bankName, statementDate)
+  personObj.outputCSVStatement(personName, bankName, statementDate)
   return
 
 # Example: python main.py stevenLu discover 250120
 if __name__ == "__main__":
 
-  if len(sys.argv) < 4:
+  if len(sys.argv) < 5:
     print("Command line arguments not enough")
     sys.exit(1)
-  elif len(sys.argv) > 4:
+  elif len(sys.argv) > 5:
     print("Command line arguments too many")
     sys.exit(1)
 
-  personName, bankName, statementDate = sys.argv[1], sys.argv[2], sys.argv[3]
-  main(personName, bankName, statementDate)
+  personName, bankName, cardType, statementDate = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+  main(personName, bankName, cardType, statementDate)
   print("Done")
