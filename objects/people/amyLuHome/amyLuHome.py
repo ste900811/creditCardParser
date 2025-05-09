@@ -71,6 +71,13 @@ class amyLuHome(people):
     return
   
   def getStatmentCSVBalance(self, filePath, bankName):
+    if bankName == "AMEX":
+      return self.processAMEXCSV(filePath)
+    else:
+      print(f"getStatmentCSVBalance failed: Bank: {bankName}")
+      return -1
+
+  def processAMEXCSV(self, filePath):
     # print(f"Getting statement balance from CSV file: {filePath}")
 
     df = pd.read_csv(filePath)
