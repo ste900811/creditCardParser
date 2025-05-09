@@ -1,5 +1,5 @@
 from objects.banks.banks import Banks
-from pypdf import PdfReader
+from PyPDF2 import PdfReader
 
 class AMEX(Banks):
   def __init__(self, bankName, cardType, statementDate):
