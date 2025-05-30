@@ -3,6 +3,7 @@ import pandas as pd
 from objects.people.people import people
 from expensesHandler.discoverStevenLuEH import expensesHandler as discoverEH
 from expensesHandler.capitalOneStevenLuEH import expensesHandler as captialOneEH
+from expensesHandler.AMEXStevenLuEH import expensesHandler as amexEH
 
 class stevenLuHome(people):
   def __init__(self, nameOnStatement):
@@ -10,10 +11,10 @@ class stevenLuHome(people):
     self.transactionList = []
 
   def outputCSVStatement(self, bankObj):
+    print("check")
     df = pd.DataFrame(self.transactionList, columns=["日期", "支出項目", "明細", "金額"])
     df.sort_values(by=["日期"], inplace=True)
     df.to_excel(f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.xlsx', index=False)
-
     return
 
   def getStatmentCSVBalance(self, filePath, bankName):
@@ -21,9 +22,11 @@ class stevenLuHome(people):
       return self.processDiscoverCSV(filePath)
     elif bankName == "capitalOne":
       return self.processCapitalOneCSV(filePath)
+    elif bankName == "AMEX":
+      return self.processAMEXCSV(filePath)
     else:
       print(f"getStatmentCSVBalance failed: Bank: {bankName}")
-      return -1
+      assert False, f"getStatmentCSVBalance failed: Bank: {bankName}"
 
   def processDiscoverCSV(self, filePath):
     csvTotalAmount = 0.0
@@ -67,6 +70,29 @@ class stevenLuHome(people):
 
       month, date = row["Transaction Date"][5:].split("-")
       self.transactionList.append([f'{month}/{date}', category, detail, amount])
+
+    return csvTotalAmount
+  
+  def processAMEXCSV(self, filePath):
+
+    csvTotalAmount = 0.0
+    df = pd.read_csv(filePath)
+
+    for index, row in df.iterrows():
+      descriptionArray = row["Description"].split(" ")
+      descriptionArray = [item for item in descriptionArray if item != '']
+      if descriptionArray[0] == "AplPay":
+        descriptionArray = descriptionArray[1:]
+        
+      category, detail, amount = amexEH(descriptionArray, row["Amount"])
+
+      if category == False:
+        print(descriptionArray, row["Amount"])
+        continue
+
+      month, date, year = row["Date"].split("/")
+      self.transactionList.append([f'{month}/{date}', category, detail, amount])
+      csvTotalAmount += amount
 
     return csvTotalAmount
   

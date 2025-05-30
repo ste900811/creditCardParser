@@ -30,6 +30,8 @@ def expensesHandler(textArray, transactionAmount):
     return "點心飲料", "Dunkin"
   if textArray[0] == "KFC":
     return "餐飲", "KFC"
+  if textArray[0] == "MARC'S":
+    return "青菜水果", "Marc's"
   
   # Section need two sections to categorize
   if textArray[0] == "DAIRY" and textArray[1] == "QUEEN":
@@ -82,6 +84,10 @@ def expensesHandler(textArray, transactionAmount):
     return "交通工具", "Get Go"
   if textArray[0] == "SAMS" and textArray[1] == "FUEL":
     return "交通工具", "Gas"
+  if textArray[0] == "SAMS" and textArray[1] == "STORE" and transactionAmount < 20:
+    return "餐飲", "Sam's Club"
+  if textArray[0] == "SAMS" and textArray[1] == "STORE" and transactionAmount >= 20:
+    return "日常用品", "Sam's Club"
 
   if textArray[0] == "SQ" and textArray[1] == "*TENSUKE" and textArray[2] == "RAMEN":
     return "餐飲", "Tensuke Ramen"

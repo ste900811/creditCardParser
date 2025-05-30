@@ -5,6 +5,22 @@ python main.py discover cashBack stevenLu 250216
   stevenLu = credit card holder
   250216 = date of the creaditcard statment
 
+bankName and cardType:
+  capitalOne
+    ventureX
+  discover
+    cashBack
+  AMEX
+    BusinessGoldCard
+    HiltonHonorsAspireCard
+    HiltonHonorsSurpassCard
+
+name:
+  amyLu
+  howardYao
+  maridaCheng
+  stevenLu
+
 expensesHanddler Folder is holding all the expenses parsing places
 mainFunctions Folder is the function using in the main.py
 objects Folder is the place holding all the calsses

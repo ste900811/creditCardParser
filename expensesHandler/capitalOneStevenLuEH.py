@@ -173,7 +173,7 @@ def expensesHandler(textArray, amount):
     return "青菜水果", "Cornerstone Market", amount
   if textArray[0][:2] == "BP" and textArray[1][:2] == "BP":
     return "交通工具", "Gas", amount
-  if textArray[0] == "METROPARKS" and textArray[1] == "ZOOCLEVELANDOH":
+  if textArray[0] == "METROPARKS" and textArray[1] == "ZOO":
     return "休閒娛樂", "Metroparks Zoo", amount
   if textArray[0] == "Kumo" and textArray[1] == "buffetparmaOH":
     return "餐飲", "Kumo Buffet", amount
@@ -387,20 +387,26 @@ def expensesHandler(textArray, amount):
     return "點心飲料", "Basecamp Coffee", amount
   if textArray[0] == "YIFANG" and textArray[1] == "TAIWAN" and textArray[2] == "FRUIT" and textArray[3] == "TE":
     return "點心飲料", "Yifang Taiwan Fruit Tea", amount
-
+  if textArray[0] == "ROYAL" and textArray[1] == "BUFFET" and textArray[2] == "&" and textArray[3] == "GRILL":
+    return "餐飲", "Royal Buffet & Grill", amount
+  if textArray[0] == "SQ" and textArray[1] == "*MING'S" and textArray[2] == "BUBBLE" and textArray[3] == "TEA":
+    return "點心飲料", "Ming's Bubble Tea", amount
+  if textArray[0] == "SQ" and textArray[1] == "*ICE" and textArray[2] == "CREAM" and textArray[3] == "TRUCK":
+    return "點心飲料", "Ice Cream Truck", amount
+  
   if len(textArray) == 4:
     return False, False, amount
 
   if textArray[0] == "ADRENALIN" and textArray[1] == "PARK" and textArray[2] == "MH" and textArray[3] == "LLCMIDDLEBURG" and textArray[4] == "HTOH":
     return "休閒娛樂", "Get Air", amount
-  if textArray[0] == "CITY" and textArray[1] == "OF" and textArray[2] == "CUYAHOGA" and textArray[3] == "FALLS" and textArray[4] == "PCUYAHOGA" and textArray[5] == "FALLOH":
-    return "休閒娛樂", "The Natatorium", amount
   if textArray[0] == "MPA" and textArray[1] == "PARKING" and textArray[2] == "PAY" and textArray[3] == "BY" and textArray[4] == "PHONE":
     return "交通工具", "Parking", amount
   if textArray[0] == "SQ" and textArray[1] == "*THE" and textArray[2] == "OHIO" and textArray[3] == "STATE" and textArray[4] == "REFORM":
     return "生活開銷", "The Ohio State Reform", amount
   if textArray[0] == "93898" and textArray[1] == "-" and textArray[2] == "UNIVERSITY" and textArray[3] == "OF" and textArray[4] == "AKR":
     return "生活開銷", "University of Akron", amount
+  if textArray[0] == "CITY" and textArray[1] == "OF" and textArray[2] == "CUYAHOGA" and textArray[3] == "FALLS" and textArray[4] == "P":
+    return "休閒娛樂", "The Natatorium", amount
 
 
 
