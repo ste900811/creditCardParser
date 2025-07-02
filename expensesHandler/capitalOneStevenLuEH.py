@@ -92,6 +92,8 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Gas", amount
   if textArray[0] == "PARKMOBILE":
     return "交通工具", "Parking", amount
+  if textArray[0] == "GOMOBILEPGH":
+    return "交通工具", "Parking", amount
    
   if len(textArray) == 1:
     return False, False, amount
@@ -244,7 +246,7 @@ def expensesHandler(textArray, amount):
   if textArray[0] == "PEKING" and textArray[1] == "CHEF":
     return "餐飲", "Peking Chef", amount
   if textArray[0] == "TENSUKE" and textArray[1] == "MARKET":
-    return "青菜水果", "Tensuke Market", amount
+    return "餐飲", "Tensuke Market", amount
   if textArray[0] == "SGT" and textArray[1] == "CLEAN":
     return "交通工具", "Sgt Clean", amount
   if textArray[0] == "BANGKOK" and textArray[1] == "THAI":
@@ -265,6 +267,16 @@ def expensesHandler(textArray, amount):
     return "養育費", "Student Treasures Publishing", amount
   if textArray[0] == "INTER-STATE" and textArray[1] == "STUDIO":
     return "養育費", "Inter State Studio", amount
+  if textArray[0] == "LEVI'S":
+    return "治裝費", "Levis", amount
+  if textArray[0] == "DUMA" and textArray[1] == "MEATS":
+    return "青菜水果", "Duma Meats", amount
+  if textArray[0] == "SQ" and textArray[1] == "*LUCHA":
+    return "點心飲料", "Lucha", amount
+  if textArray[0] == "SQ" and textArray[1] == "*MIDWAYFOODSLLC":
+    return "點心飲料", "Midway Foods", amount
+  if textArray[0] == "AKRON" and textArray[1] == "ZOO":
+    return "休閒娛樂", "Akron Zoo", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -334,6 +346,18 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Tensuke Ramen", amount
   if textArray[0] == "PMUSA" and textArray[2] == "CUMBERLAN":
     return "交通工具", "Parking", amount
+  if textArray[0] == "GO!" and textArray[1] == "CALENDARS":
+    return "養育費", "Go Retail Group", amount
+  if textArray[0] == "SQ" and textArray[1] == "*BELLE'S" and textArray[2] == "BREAD":
+    return "點心飲料", "Belles Bread", amount
+  if textArray[0] == "Hunan" and textArray[1] == "of" and textArray[2] == "Stow":
+    return "餐飲", "Hunan of Stow", amount
+  if textArray[0] == "SQ" and textArray[1] == "*DREAMSICLE" and textArray[2] == "CONCESSION":
+    return "點心飲料", "Dreamsicle Concession", amount
+  if textArray[0] == "METRO" and textArray[1] == "AIRPORT" and textArray[2] == "PARKING":
+    return "交通工具", "Parking", amount
+  if textArray[0] == "SQ" and textArray[1] == "*TENSUKE" and textArray[2] == "MARKET":
+    return "點心飲料", "Tensuke Market", amount
   
   if len(textArray) == 3:
     return False, False, amount
@@ -393,7 +417,13 @@ def expensesHandler(textArray, amount):
     return "點心飲料", "Ming's Bubble Tea", amount
   if textArray[0] == "SQ" and textArray[1] == "*ICE" and textArray[2] == "CREAM" and textArray[3] == "TRUCK":
     return "點心飲料", "Ice Cream Truck", amount
-  
+  if textArray[0] == "NIAGARA" and textArray[1] == "FALLS" and textArray[2] == "ST" and textArray[3] == "PK":
+    return "交通工具", "Parking", amount
+  if textArray[0] == "ROYAL" and textArray[1] == "DRAGON" and textArray[2] == "NOODLE" and textArray[3] == "BAR":
+    return "餐飲", "Royal Dragon Noodle Bar", amount
+  if textArray[0] == "BLUE" and textArray[1] == "RHINO" and textArray[2] == "" and textArray[3] == "PROPANE":
+    return "生活開銷", "Blue Rhino Propane", amount
+
   if len(textArray) == 4:
     return False, False, amount
 
@@ -407,6 +437,12 @@ def expensesHandler(textArray, amount):
     return "生活開銷", "University of Akron", amount
   if textArray[0] == "CITY" and textArray[1] == "OF" and textArray[2] == "CUYAHOGA" and textArray[3] == "FALLS" and textArray[4] == "P":
     return "休閒娛樂", "The Natatorium", amount
+  if textArray[0] == "PT" and textArray[1] == "AUTHY" and textArray[2] == "ALLEG" and textArray[3] == "TKT" and textArray[4] == "VEND":
+    return "休閒娛樂", "Pittsburgh Authority", amount
+  if textArray[0] == "MAID" and textArray[1] == "OF" and textArray[2] == "THE" and textArray[3] == "MIST" and textArray[4] == "CORPO":
+    return "休閒娛樂", "Maid of the Mist", amount
+  if textArray[0] == "UEP*KINTARO" and textArray[1] == "ALL" and textArray[2] == "YOU" and textArray[3] == "CAN" and textArray[4] == "E":
+    return "餐飲", "Kintaro", amount
 
 
 

@@ -1,4 +1,5 @@
 import sys
+import math
 
 from mainFunctions.createObjects import createObjects
 
@@ -35,8 +36,9 @@ def main(bankName, cardType, nameOnStatement, statementDate):
     assert round(bankObj.statmentPDFBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
       f"Discover: PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}"
   elif bankName == "AMEX":
-    assert round(bankObj.statmentPDFBalance - bankObj.previousBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
-      f'{bankObj.bankName}_{bankObj.cardType}: PDF and CSV statement balance do not match'
+    assert math.isclose(bankObj.statmentPDFBalance, bankObj.statmentCSVBalance), \
+      f'{bankObj.bankName}_{bankObj.cardType}: PDF and CSV statement balance do not match\n \
+        PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}'
   else:
     assert False, f"Bank not supported: {bankName}"
 

@@ -79,6 +79,9 @@ class stevenLuHome(people):
     df = pd.read_csv(filePath)
 
     for index, row in df.iterrows():
+      if "ONLINE PAYMENT" in row["Description"]:
+        continue
+      
       descriptionArray = row["Description"].split(" ")
       descriptionArray = [item for item in descriptionArray if item != '']
       if descriptionArray[0] == "AplPay":
