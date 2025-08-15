@@ -88,7 +88,10 @@ def expensesHandler(textArray, transactionAmount):
     return "餐飲", "Sam's Club"
   if textArray[0] == "SAMS" and textArray[1] == "STORE" and transactionAmount >= 20:
     return "日常用品", "Sam's Club"
-
+  if textArray[0] == "CIRCLE" and textArray[1] == "K" and transactionAmount >= 50:
+    return "Checking", "Circle K"
+  if textArray[0] == "CIRCLE" and textArray[1] == "K" and transactionAmount < 50:
+    return "交通工具", "Gas"
   if textArray[0] == "SQ" and textArray[1] == "*TENSUKE" and textArray[2] == "RAMEN":
     return "餐飲", "Tensuke Ramen"
   if textArray[0] == "ACE" and textArray[1] == "HARDWARE" and textArray[2] == "CORPORATION":
