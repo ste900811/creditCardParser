@@ -35,7 +35,7 @@ def expensesHandler(textArray, amount):
   if textArray[0] == "KFC":
     return "餐飲", "KFC", amount
   if textArray[0] == "EZPASS":
-    return "交通工具", "EZPass", amount
+    return "交通工具", "Toll", amount
   if textArray[0] == "CHIPOTLE":
     return "餐飲", "Chipotle", amount
   if textArray[0] == "TSAOCAA":
@@ -94,6 +94,8 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Parking", amount
   if textArray[0] == "GOMOBILEPGH":
     return "交通工具", "Parking", amount
+  if textArray[0] == "ETOLLAVIS":
+    return "交通工具", "Toll", amount
    
   if len(textArray) == 1:
     return False, False, amount
@@ -277,6 +279,14 @@ def expensesHandler(textArray, amount):
     return "點心飲料", "Midway Foods", amount
   if textArray[0] == "AKRON" and textArray[1] == "ZOO":
     return "休閒娛樂", "Akron Zoo", amount
+  if textArray[0] == "GO!" and textArray[1] == "CALENDARS,GAMES,BOOKS":
+    return "養育費", "Go! Calendars", amount
+  if textArray[0] == "SkyZoneBoston" and textArray[1] == "Heights":
+    return "養育費", "Sky Zone", amount
+  if textArray[0] == "DAIRY" and textArray[1] == "QUEEN":
+    return "餐飲", "Dairy Queen", amount
+  if textArray[0] == "AVIS" and textArray[1] == "RENT-A-CAR":
+    return "休閒娛樂", "Avis", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -358,6 +368,12 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Parking", amount
   if textArray[0] == "SQ" and textArray[1] == "*TENSUKE" and textArray[2] == "MARKET":
     return "點心飲料", "Tensuke Market", amount
+  if textArray[0] == "PARK" and textArray[1] == "TO" and textArray[2] == "SHOP":
+    return "青菜水果", "Park to Shop", amount
+  if textArray[0] == "THE" and textArray[1] == "UPS" and textArray[2] == "STORE":
+    return "生活開銷", "The UPS Store", amount
+  if textArray[0] == "ONLINE" and textArray[1] == "LIQUIDATION" and textArray[2] == "AUC":
+    return "日常用品", "Online Liquidation Auction", amount
   
   if len(textArray) == 3:
     return False, False, amount
@@ -443,7 +459,8 @@ def expensesHandler(textArray, amount):
     return "休閒娛樂", "Maid of the Mist", amount
   if textArray[0] == "UEP*KINTARO" and textArray[1] == "ALL" and textArray[2] == "YOU" and textArray[3] == "CAN" and textArray[4] == "E":
     return "餐飲", "Kintaro", amount
-
+  if textArray[0] == "SQ" and textArray[1] == "*THE" and textArray[2] == "TUNNEL" and textArray[3] == "HOTEL" and textArray[4] == "AND":
+    return "點心飲料", "The Tunnel Hotel", amount
 
 
   # if didn't find the category, return False
