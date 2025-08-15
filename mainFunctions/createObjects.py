@@ -27,6 +27,9 @@ def createObjects(bankName, cardType, statementDate, personName):
   elif bankName == "AMEX" and cardType == "HiltonHonorsSurpassCard" and personName == "stevenLu":
     bankObj = AMEX(bankName, cardType, statementDate)
     personObj = stevenLuHome(personName)
+  elif bankName == "AMEX" and cardType == "HiltonHonorsAspireCard" and personName == "stevenLu":
+    bankObj = AMEX(bankName, cardType, statementDate)
+    personObj = stevenLuHome(personName)
   else:
     print(f'createObject failed: Bank: {bankName}, Card Type: {cardType}, Person: {personName}')
     sys.exit(1)

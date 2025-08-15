@@ -84,7 +84,7 @@ class stevenLuHome(people):
       
       descriptionArray = row["Description"].split(" ")
       descriptionArray = [item for item in descriptionArray if item != '']
-      if descriptionArray[0] == "AplPay":
+      while descriptionArray[0] == "AplPay" or descriptionArray[0] == "UPSIDE*" or descriptionArray[0] == "TST*":
         descriptionArray = descriptionArray[1:]
         
       category, detail, amount = amexEH(descriptionArray, row["Amount"])

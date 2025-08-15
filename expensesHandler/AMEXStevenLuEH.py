@@ -16,6 +16,12 @@ def expensesHandler(textArray, amount):
     return "餐飲", "KFC", amount
   if textArray[0] == "CHIPOTLE" and textArray[1] == "MEX":
     return "餐飲", "Chipotle Mexican Grill", amount
+  if textArray[0] == "PARKMOBILE":
+    return "交通工具", "Parking", amount
+  if textArray[0] == "WAL-MART":
+    return "日常用品", "Walmart", amount
+  if textArray[0] == "SPAGHETTAKRON":
+    return "餐飲", "Spaghetti Warehouse", amount
 
   if len(textArray) == 1:
     return False, False, amount
@@ -60,6 +66,16 @@ def expensesHandler(textArray, amount):
     return "餐飲", "ROI ET", amount
   if textArray[0] == "UEP*LU" and textArray[1] == "CHA":
     return "點心飲料", "Lu Cha", amount
+  if textArray[0] == "UMAMI" and textArray[1] == "NOODLE":
+    return "餐飲", "Umami Noodle", amount
+  if textArray[0] == "OLIVE" and textArray[1] == "GARDEN":
+    return "餐飲", "Olive Garden", amount
+  if textArray[0] == "BOB" and textArray[1] == "EVANS":
+    return "餐飲", "Bob Evans", amount
+  if textArray[0] == "BONCHON-" and textArray[1] == "SEVEN":
+    return "餐飲", "Bonchon Seven", amount
+  if textArray[0] == "KING" and textArray[1] == "DRAGON":
+    return "餐飲", "King Dragon", amount
   
   if len(textArray) == 2:
     return False, False, amount
@@ -82,6 +98,10 @@ def expensesHandler(textArray, amount):
 
   if textArray[0] == "J" and textArray[1] == "&" and textArray[2] == "K" and textArray[3] == "SUBWAYNORTH" and textArray[4] == "CANTON":
     return "餐飲", "J&K Subway", amount
+  if textArray[0] == "GOGI" and textArray[1] == "EN" and textArray[2] == "K" and textArray[3] == "BBQ":
+    return "餐飲", "Gogi En K", amount
+  if textArray[0] == "THE" and textArray[1] == "CAFE" and textArray[2] == "IN" and textArray[3] == "SSTOW":
+    return "餐飲", "The Cafe In Stow", amount
 
   # if didn't find the category, return False
   return False, False, amount
