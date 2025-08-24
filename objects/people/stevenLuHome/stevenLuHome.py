@@ -33,7 +33,7 @@ class stevenLuHome(people):
     df = pd.read_csv(filePath)
 
     for index, row in df.iterrows():
-      if row["Category"] == "Awards and Rebate Credits" or row["Category"] == "Payments and Credits":
+      if row["Category"] == "Awards and Rebate Credits" or (row["Category"] == "Payments and Credits" and row["Description"] == "INTERNET PAYMENT - THANK YOU"):
         continue
 
       category, detail = discoverEH(row["Description"].split(" "), row["Amount"])
@@ -42,7 +42,9 @@ class stevenLuHome(people):
         print(row["Description"].split(" "), row["Amount"])
         continue
       
-      csvTotalAmount += row["Amount"]
+      if row["Amount"] > 0:
+        csvTotalAmount += row["Amount"]
+
       self.transactionList.append([row["Trans. Date"][:-5], category, detail, row["Amount"]])
 
     return csvTotalAmount
