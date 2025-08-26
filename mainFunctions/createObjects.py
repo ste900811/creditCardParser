@@ -3,6 +3,7 @@ import sys
 from objects.banks.discover.discover import Discover
 from objects.banks.capitalOne.capitalOne import CapitalOne
 from objects.banks.AMEX.AMEX import AMEX
+from objects.banks.Citi.citi import Citi
 
 from objects.people.stevenLuHome.stevenLuHome import stevenLuHome
 from objects.people.amyLuHome.amyLuHome import amyLuHome
@@ -29,6 +30,9 @@ def createObjects(bankName, cardType, statementDate, personName):
     personObj = stevenLuHome(personName)
   elif bankName == "AMEX" and cardType == "HiltonHonorsAspireCard" and personName == "stevenLu":
     bankObj = AMEX(bankName, cardType, statementDate)
+    personObj = stevenLuHome(personName)
+  elif bankName == "Citi" and cardType == "strataElite" and personName == "stevenLu":
+    bankObj = Citi(bankName, cardType, statementDate)
     personObj = stevenLuHome(personName)
   else:
     print(f'createObject failed: Bank: {bankName}, Card Type: {cardType}, Person: {personName}')

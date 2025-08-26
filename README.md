@@ -14,6 +14,8 @@ bankName and cardType:
     BusinessGoldCard
     HiltonHonorsAspireCard
     HiltonHonorsSurpassCard
+  Citi
+    strataElite
 
 name:
   amyLu

@@ -4,6 +4,7 @@ from objects.people.people import people
 from expensesHandler.discoverStevenLuEH import expensesHandler as discoverEH
 from expensesHandler.capitalOneStevenLuEH import expensesHandler as captialOneEH
 from expensesHandler.AMEXStevenLuEH import expensesHandler as amexEH
+from expensesHandler.citiStevenLuEH import expensesHandler as citiEH
 
 class stevenLuHome(people):
   def __init__(self, nameOnStatement):
@@ -24,6 +25,8 @@ class stevenLuHome(people):
       return self.processCapitalOneCSV(filePath)
     elif bankName == "AMEX":
       return self.processAMEXCSV(filePath)
+    elif bankName == "Citi":
+      return self.processCitiCSV(filePath)
     else:
       print(f"getStatmentCSVBalance failed: Bank: {bankName}")
       assert False, f"getStatmentCSVBalance failed: Bank: {bankName}"
@@ -98,6 +101,29 @@ class stevenLuHome(people):
       month, date, year = row["Date"].split("/")
       self.transactionList.append([f'{month}/{date}', category, detail, amount])
       csvTotalAmount += amount
+
+    return csvTotalAmount
+  
+  def processCitiCSV(self, filePath):
+
+    csvTotalAmount = 0.0
+    df = pd.read_csv(filePath)
+
+    for index, row in df.iterrows():
+
+      descriptionArray = row["Description"].split(" ")
+
+      if row["Debit"]:
+        category, detail, amount = citiEH(descriptionArray, row["Debit"])
+
+        if category == False:
+          print(descriptionArray, row["Debit"])
+          continue
+
+      csvTotalAmount += amount
+
+      month, date, year = row["Date"].split("/")
+      self.transactionList.append([f'{month}/{date}', category, detail, amount])
 
     return csvTotalAmount
   
