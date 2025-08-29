@@ -108,6 +108,10 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "STORE" and "MCLEAN" in textArray and "VA" in textArray:
     return "Dining"
+  if textArray[0] == "TABACCHI" and "FIRENZE" in textArray:
+    return "Travel"
+  if textArray[0] == "IDEXE'" and "LUCCA" in textArray:
+    return "Baby"
 
   if len(textArray) == 1:
     return False
@@ -216,7 +220,39 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "CPI*CANTEEN" and textArray[1] == "VSUITLAND" and "MD" in textArray:
     return "Dining"
-      
+  if textArray[0] == "FALAFEL" and textArray[1] == "INC":
+    return "Dining"
+  if textArray[0] == "VENCHI" and textArray[1] == "TYSONSMCLEAN":
+    return "Dining"
+  if textArray[0] == "BURLINGTON" and textArray[1] == "STORES":
+    return "Others/YL"
+  if textArray[0] == "MARUFUJI" and textArray[1] == "MARKVIENNA":
+    return "Grocery"
+  if textArray[0] == "GRUBHUB*PULCINEW" and textArray[1] == "YORK":
+    return "Dining"
+  if textArray[0] == "TST*" and textArray[1] == "MARUICHIVIENNA":
+    return "Dining"
+  if textArray[0] == "ARAMARK" and textArray[1] == "EPICUWASHINGTON":
+    return "Dining"
+  if textArray[0] == "525310" and textArray[1] == "SSPFRIROISSY":
+    return "Dining"
+  if textArray[0] == "CARREFOUR" and textArray[1] == "EXPRESS":
+    return "Grocery"
+  if textArray[0] == "PERCHE" and textArray[1] == "NO":
+    return "Dining"
+  if textArray[0] == "GELATERIA" and textArray[1] == "PASCO":
+    return "Dining" 
+  if textArray[0] == "L'OPERA" and textArray[1] == "CAFFE'":
+    return "Dining"
+  if textArray[0] == "CONAD" and textArray[1] == "CITY":
+    return "Dining"
+  if textArray[0] == "LUCCA" and textArray[1] == "SS" and textArray[2] == "DPR":
+    return "Dining"
+  if textArray[0] == "MC" and textArray[1] == "DONALD'S":
+    return "Dining"
+  if textArray[0] == "VARRONE" and textArray[1] == "PASTA":
+    return "Dining"
+
   if len(textArray) == 2:
     return False
   
@@ -264,7 +300,31 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "CHARM" and textArray[1] == "SIROO" and textArray[2] == "IANNANDALE":
     return "Dining"
-    
+  if textArray[0] == "Flower" and textArray[1] == "Child" and textArray[2] == "Bethesda":
+    return "Dining"
+  if textArray[0] == "DR" and textArray[1] == "UPPASNA" and textArray[2] == "CHMCLEAN":
+    return "Medical Expense"
+  if textArray[0] == "GOOGLE*YOUTUBEPREMIU" and textArray[1] == "G.CO" and textArray[2] == "HELPPAY#":
+    return "Youtube"
+  if textArray[0] == "MICRO" and textArray[1] == "CENTER" and textArray[2] == "81":
+    return "Other/HY"
+  if textArray[0] == "HOTEL" and textArray[1] == "PORTRAIT" and textArray[2] == "FIRENFIRENZE":
+    return "Dining"
+  if textArray[0] == "NEW" and textArray[1] == "BAHIA" and textArray[2] == "CAFE":
+    return "Dining"
+  if textArray[0] == "ANTICA" and textArray[1] == "GIOSTRA" and textArray[2] == "TOSCAFIRENZE":
+    return "Dining"
+  if textArray[0] == "RISTORANTE" and textArray[1] == "SANTA" and textArray[2] == "MARFIRENZE":
+    return "Dining"
+  if textArray[0] == "AUTOLINEE-TOSBORGO" and textArray[1] == "SAN" and textArray[2] == "LORENZO":
+    return "Travel"
+  if textArray[0] == "PROPAY" and textArray[1] == "RESIDENTIAL" and textArray[2] == "RNewton":
+    return "Condo Fee"
+  if textArray[0] == "OPERA" and textArray[1] == "DELLA" and textArray[2] == "PPISA":
+    return "Dining"
+  if textArray[0] == "OPERA" and textArray[1] == "DELLA" and textArray[2] == "PRIMAZIAPISA":
+    return "Entertainment"
+
   if len(textArray) == 3:
     return False
 
@@ -282,8 +342,31 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "NIC*-" and textArray[1] == "DTA" and textArray[2] == "-" and textArray[3] == "TAX":
     return "Car Expense"
+  if textArray[0] == "OPENAI" and textArray[1] == "*CHATGPT" and textArray[2] == "SUBSSAN" and textArray[3] =="FRANCISCO":
+    return "Software"
+  if textArray[0] == "GOOD" and textArray[1] == "FORTUNE" and textArray[2] == "FALLS" and textArray[3] == "CHURCH":
+    return "Grocery"
+  if textArray[0] == "TST*" and textArray[1] == "PETER" and textArray[2] == "CHANG" and textArray[3] == "MCLMCLEAN":
+    return "Dining"
+  if textArray[0] == "TST*" and textArray[1] == "PARIS" and textArray[2] == "BAGUETTE" and textArray[3] == "MCLEAN":
+    return "Dining"
+  if textArray[0] == "766" and textArray[1] == "JGILBERT" and textArray[2] == "MCLEAN" and textArray[3] == "MCLEAN":
+    return "Dining"
+  if textArray[0] == "PAYPAL" and textArray[1] == "*DOMINION" and textArray[2] == "EN" and textArray[3] == "8048192917":
+    return "Utility"
+  if textArray[0] == "BOTTEGA" and textArray[1] == "DEL" and textArray[2] == "TARTUFO" and textArray[3] == "FIRENZE":
+    return "Dining"
+  if textArray[0] == "ANTICA" and textArray[1] == "E" and textArray[2] == "PREMIATA" and textArray[3] == "TILUCCA":
+    return "Dining"
+  if textArray[0] == "LA" and textArray[1] == "BOTTEGA" and textArray[2] == "DEL" and textArray[3] == "TARTULUCCA":
+    return "Dining"
+  if textArray[0] == "SUMUP*LAZZARONI" and textArray[1] == "DI" and textArray[2] == "TSANGIULIANO" and textArray[3] == "TERME":
+    return "Dining"
 
   if len(textArray) == 4:
     return False
+
+  if textArray[0] == "PISA" and textArray[1] == "S." and textArray[2] == "ROSSORE" and textArray[3] == "SS" and textArray[4] == "DPISA":
+    return "Dining"
 
   return False

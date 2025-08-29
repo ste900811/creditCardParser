@@ -34,12 +34,16 @@ class amyLuHome(people):
       "1333 gas": 0,
       "Youtube": 0,
       "Steven": 0,
+      "Software": 0,
+      "Medical Expense": 0,
+      "Utility": 0,
+      "Condo Fee": 0
     }
     self.categoriesTotal = dict()
 
   def outputCSVStatement(self, bankObj):
 
-    outputFilePath = f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.xlsx'
+    outputFilePath = f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.csv'
     
     keys = [key for key in self.categories]
     title = ["Month"] + keys
@@ -87,9 +91,9 @@ class amyLuHome(people):
 
     csvTotalAmount = 0.0    
     for index, row in df.iterrows():
-      
-      # Update the total amount
-      csvTotalAmount += row["Amount"]
+
+      if row["Description"] == "AUTOPAY PAYMENT - THANK YOU":
+        continue
 
       # Update the categories total amount
       description = row["Description"].split(" ")
@@ -101,8 +105,15 @@ class amyLuHome(people):
       if category == False:
         print(description, row["Amount"])
         continue
-
-      self.categoriesTotal[month][category] += row["Amount"]
+      else:
+        # Update the total amount
+        csvTotalAmount += row["Amount"]
+      
+      try:
+        self.categoriesTotal[month][category] += row["Amount"]
+      except KeyError:
+        print(f'No category found: {description} {row["Amount"]}')
+        continue
 
     return csvTotalAmount
   
