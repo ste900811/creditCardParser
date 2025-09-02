@@ -32,11 +32,11 @@ class amyLuHome(people):
       "HOA": 0,
       "1888 lillian electric": 0,
       "1333 gas": 0,
+      "1333 electricity": 0,
       "Youtube": 0,
       "Steven": 0,
       "Software": 0,
       "Medical Expense": 0,
-      "Utility": 0,
       "Condo Fee": 0
     }
     self.categoriesTotal = dict()

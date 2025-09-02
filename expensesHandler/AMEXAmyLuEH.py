@@ -353,7 +353,7 @@ def expensesHandler(textArray, amount):
   if textArray[0] == "766" and textArray[1] == "JGILBERT" and textArray[2] == "MCLEAN" and textArray[3] == "MCLEAN":
     return "Dining"
   if textArray[0] == "PAYPAL" and textArray[1] == "*DOMINION" and textArray[2] == "EN" and textArray[3] == "8048192917":
-    return "Utility"
+    return "1333 electricity"
   if textArray[0] == "BOTTEGA" and textArray[1] == "DEL" and textArray[2] == "TARTUFO" and textArray[3] == "FIRENZE":
     return "Dining"
   if textArray[0] == "ANTICA" and textArray[1] == "E" and textArray[2] == "PREMIATA" and textArray[3] == "TILUCCA":
