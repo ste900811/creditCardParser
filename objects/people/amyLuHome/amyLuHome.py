@@ -43,8 +43,8 @@ class amyLuHome(people):
 
   def outputCSVStatement(self, bankObj):
 
-    outputFilePath = f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}.csv'
-    
+    outputFilePath = f'./statements/{self.nameOnStatement}/outputFile/{bankObj.bankName}_{bankObj.cardType}_{bankObj.StatementDate}_{bankObj.cardLast5Digits}.csv'
+
     keys = [key for key in self.categories]
     title = ["Month"] + keys
 
@@ -93,6 +93,7 @@ class amyLuHome(people):
     for index, row in df.iterrows():
 
       if row["Description"] == "AUTOPAY PAYMENT - THANK YOU":
+        self.bankObj.payments += row["Amount"]
         continue
 
       # Update the categories total amount
@@ -106,6 +107,9 @@ class amyLuHome(people):
         print(description, row["Amount"])
         continue
       else:
+        if row["Amount"] < 0:
+          self.bankObj.creditAmount += row["Amount"]
+          csvTotalAmount += row["Amount"]
         # Update the total amount
         csvTotalAmount += row["Amount"]
       

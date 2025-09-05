@@ -14,6 +14,7 @@ bankName and cardType:
     BusinessGoldCard
     HiltonHonorsAspireCard
     HiltonHonorsSurpassCard
+    AMEXGoldCard
   Citi
     strataElite
 

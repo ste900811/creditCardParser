@@ -4,24 +4,32 @@ from PyPDF2 import PdfReader
 class AMEX(Banks):
   def __init__(self, bankName, cardType, statementDate):
     super().__init__(bankName, statementDate)
-    self.previousBalance = 0.0
+    self.creditAmount = 0.0
+    self.payments = 0.0
+    self.PDFPreviousBalance = -99999.99
     self.cardType = cardType
 
   def getStatmentPDFBalance(self, filePath):
     # print(f"Getting statement balance from PDF file: {filePath}")
 
-    previousLine, currentLine = "", ""
-
     reader = PdfReader(filePath)
     for i in range(len(reader.pages)):
       page = reader.pages[i]
       for line in page.extract_text().split("\n"):
-        previousLine, currentLine = currentLine, line
-        if previousLine == "New Balance" and currentLine[0] == "$":
-          amountStr = line[1:].replace(",", "")
-          pdfStatementBalance = float(amountStr)
-        if line[:17] == "Interest Charged$":
-          self.previousBalance = float(line[17:].replace(",", ""))
-          return pdfStatementBalance
-           
+        if line.startswith("Account Ending"):
+          self.cardLast5Digits = line.split("-")[1][:5]
+        if line.startswith("New Balance $"):
+          self.PDFNewBalance = float(line.split("$")[-1].replace(",", ""))
+        if line.startswith("Interest Charged$"):
+          self.PDFPreviousBalance = float(line.split("$")[-1].replace(",", ""))
+        if "Account Ending" in line and "Closing Date" in line:
+          self.cardLast5Digits = line.split("Account Ending")[-1].split("-")[1][:5]
+
+    if self.PDFInfoCheck():
+      return self.PDFNewBalance
+
     assert False, f'{self.bankName}_{self.cardType}: getStatmentPDFBalance: No balance found in PDF file'
+
+  def PDFInfoCheck(self):
+    return self.cardLast5Digits != "" and self.PDFNewBalance != -99999.99 and self.PDFPreviousBalance != -99999.99
+
