@@ -22,7 +22,7 @@ class amyLuHome(people):
       "RY Class": 0,
       "Others/YL": 0,
       "Computer/Cloud": 0,
-      "Other/HY": 0,
+      "Others/HY": 0,
       "Medical Expense": 0,
       "Bus Exp/Prof Fee": 0,
       "House Expense": 0,
@@ -97,9 +97,7 @@ class amyLuHome(people):
         continue
 
       # Update the categories total amount
-      description = row["Description"].split(" ")
-      if description[0] == "AplPay" or description[0] == "TN":
-        description = description[1:]
+      description = self.bankObj.filterOutPaymentsMethod(row["Description"].split(" "))
       category = AMEXEH(description, row["Amount"])
       month = row["Date"].split("/")[0]
 
@@ -116,7 +114,7 @@ class amyLuHome(people):
       try:
         self.categoriesTotal[month][category] += row["Amount"]
       except KeyError:
-        print(f'No category found: {description} {row["Amount"]}')
+        print(f'No category found: {description} {row["Amount"]}, {category}')
         continue
 
     return csvTotalAmount
