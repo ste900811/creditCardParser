@@ -126,6 +126,8 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "STORE" and "CLEVELAND" in textArray and "OH" in textArray:
     return "Dining"
+  if textArray[0] == "GOMOBILEPGH" and "PITTSBURGH" in textArray:
+    return "Dining"
 
   if len(textArray) == 1:
     return False
@@ -292,7 +294,17 @@ def expensesHandler(textArray, amount):
     return "AMEX FEE"
   if textArray[0] == "MARKET" and textArray[1] == "DISTRIPITTSURGH":
     return "Dining"
-
+  if textArray[0] == "SOUTHEAST" and textArray[1] == "IMPREFAIRFAX":
+    return "Dining"
+  if textArray[0] == "CHEESECAKE" and textArray[1] == "TYMCLEAN":
+    return "Dining"
+  if textArray[0] == "KADHAI" and textArray[1] == "INC" and "MD" in textArray:
+    return "Dining"
+  if textArray[0] == "CRACKER" and textArray[1] == "BARREL" and "PA" in textArray:
+    return "Dining"
+  if textArray[0] == "DUTCH" and textArray[1] == "WONDERLLANCASTER" and "PA" in textArray:
+    return "Dining"
+  
   if len(textArray) == 2:
     return False
   
@@ -313,6 +325,8 @@ def expensesHandler(textArray, amount):
   if textArray[0] == "Hilton" and textArray[1] == "Resort" and textArray[2] == "Credit":
     return "Travel"
   if textArray[0] == "AMEX" and textArray[1] == "Flight" and textArray[2] == "Credit":
+    return "AMEX FEE"
+  if textArray[0] == "AMEX" and textArray[1] == "RESY" and textArray[2] == "CREDIT":
     return "AMEX FEE"
   if textArray[0] == "LALA" and textArray[1] == "PORT" and textArray[2] == "EXPOCITY":
     return "Others/YL"
@@ -379,6 +393,20 @@ def expensesHandler(textArray, amount):
   if textArray[0] == "HAI" and textArray[1] == "DUONG" and textArray[2] == "RESTAURANTFALLCHURCH":
     return "Dining"
   if textArray[0] == "GOMOBILEPGH" and textArray[1] == "2" and textArray[2] == "0000":
+    return "Dining"
+  if textArray[0] == "RHEE" and textArray[1] == "20663" and textArray[2] == "LLFAIRFAX":
+    return "Dining"
+  if textArray[0] == "CAFE" and textArray[1] == "33" and textArray[2] == "00000PITTSBURGH":
+    return "Dining"
+  if textArray[0] == "AMEX" and textArray[1] == "Dining" and textArray[2] == "Credit":
+    return "AMEX FEE"
+  if textArray[0] == "QUICKWAY" and textArray[1] == "JAPAFALLS" and textArray[2] == "CHURCH":
+    return "Dining"
+  if textArray[0] == "TASTE" and textArray[1] == "OF" and textArray[2] == "KORECHANTILLY":
+    return "Dining"
+  if textArray[0] == "DULLES" and textArray[1] == "EXPO" and textArray[2] == "LChantilly":
+    return "Dining"
+  if textArray[0] == "YARD" and textArray[1] == "HOUSE" and textArray[2] == "01MCLEAN":
     return "Dining"
 
   if len(textArray) == 3:
