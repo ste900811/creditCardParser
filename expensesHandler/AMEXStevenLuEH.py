@@ -28,6 +28,14 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Gas", amount
   if textArray[0] == "DENNY'S":
     return "餐飲", "Denny's", amount
+  if textArray[0] == "SPECTRUM":
+    return "通訊費", "Spectrum", amount
+  if textArray[0] == "DUNKIN":
+    return "點心飲料", "Dunkin Donuts", amount
+  if textArray[0] == "PANINIS":
+    return "餐飲", "Paninis", amount
+  if textArray[0] == "TARGET":
+    return "日常用品", "Target", amount
 
   if len(textArray) == 1:
     return False, False, amount
@@ -86,6 +94,10 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Burger King", amount
   if textArray[0] == "HAMPTON" and textArray[1] == "INN":
     return "休閒娛樂", "Hampton Inns", amount
+  if textArray[0] == "RITTMAN" and textArray[1] == "ORCHADoylestown":
+    return "休閒娛樂", "Rittman Orchard", amount
+  if textArray[0] == "CAFE" and textArray[1] == "MARK":
+    return "點心飲料", "Cafe Mark", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -94,6 +106,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Anchor Bar", amount
   if textArray[0] == "PY" and textArray[1] == "*KUNG" and textArray[2] == "FU":
     return "點心飲料", "Kung Fu Tea", amount
+  if textArray[0] == "ROUTE" and textArray[1] == "220" and textArray[2] == "DINER":
+    return "餐飲", "Route 220 Diner", amount
 
   if len(textArray) == 3:
     return False, False, amount
@@ -102,8 +116,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "The Cafe In Stow", amount
   if textArray[0] == "TST*" and textArray[1] == "KPOT" and textArray[2] == "KOREAN" and textArray[3] == "BBQCANTON":
     return "餐飲", "K-Pot Korean BBQ", amount
-  if textArray[0] == "ROUTE" and textArray[1] == "220" and textArray[2] == "DINER":
-    return "餐飲", "Route 220 Diner", amount
+  if textArray[0] == "SP" and textArray[1] == "MAEVERLY" and textArray[2] == "STOW" and textArray[3] == "OH":
+    return "治裝費", "Maeve", amount
 
   if len(textArray) == 4:
     return False, False, amount

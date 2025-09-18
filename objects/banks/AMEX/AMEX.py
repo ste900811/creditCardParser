@@ -18,7 +18,7 @@ class AMEX(Banks):
       for line in page.extract_text().split("\n"):
         if line.startswith("Account Ending"):
           self.cardLast5Digits = line.split("-")[1][:5]
-        if line.startswith("New Balance $"):
+        if "New Balance $" in line:
           self.PDFNewBalance = float(line.split("$")[-1].replace(",", ""))
         if line.startswith("Interest Charged$"):
           self.PDFPreviousBalance = float(line.split("$")[-1].replace(",", ""))
