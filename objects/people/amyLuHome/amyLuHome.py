@@ -97,7 +97,7 @@ class amyLuHome(people):
         continue
 
       # Update the categories total amount
-      description = self.bankObj.filterOutPaymentsMethod(row["Description"].split(" "))
+      description = self.filterOutPaymentsMethod(row["Description"].split(" "))
       category = AMEXEH(description, row["Amount"])
       month = row["Date"].split("/")[0]
 

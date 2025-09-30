@@ -17,8 +17,3 @@ class Banks:
   @abstractmethod
   def getStatmentCSVBalance(self, filePath):
     pass
-
-  def filterOutPaymentsMethod(self, array):
-    while array[0] == "TST*" or array[0] == "AplPay" or array[0] == "TN":
-      array.pop(0)
-    return array

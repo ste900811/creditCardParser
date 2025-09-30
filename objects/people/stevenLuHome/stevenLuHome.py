@@ -79,6 +79,7 @@ class stevenLuHome(people):
     return csvTotalAmount
   
   def processAMEXCSV(self, filePath):
+    print("AMEX: getStatmentCSVBalance")
 
     csvTotalAmount = 0.0
     df = pd.read_csv(filePath)
@@ -107,24 +108,30 @@ class stevenLuHome(people):
   
   def processCitiCSV(self, filePath):
 
-    csvTotalAmount = 0.0
     df = pd.read_csv(filePath)
 
     for index, row in df.iterrows():
 
+      if "ONLINE PAYMENT, THANK YOU" in row["Description"]:
+        self.bankObj.paymentsAmount = row["Credit"]
+        continue
+
       descriptionArray = row["Description"].split(" ")
+      descriptionArray = self.filterOutPaymentsMethod(descriptionArray)
 
-      if row["Debit"]:
+      if pd.isna(row["Debit"]) == False:
         category, detail, amount = citiEH(descriptionArray, row["Debit"])
+        if category != False:
+          self.bankObj.purchasesAmount += amount
+      elif pd.isna(row["Credit"]) == False:
+        category, detail, amount = citiEH(descriptionArray, -row["Credit"])
+        if category != False:
+          self.bankObj.creditsAmount -= amount
 
-        if category == False:
-          print(descriptionArray, row["Debit"])
-          continue
-
-      csvTotalAmount += amount
+      if category == False:
+        print(f'{descriptionArray} {row["Debit"]} {row["Credit"]}')
+        continue
 
       month, date, year = row["Date"].split("/")
       self.transactionList.append([f'{month}/{date}', category, detail, amount])
-
-    return csvTotalAmount
   
