@@ -85,10 +85,10 @@ class stevenLuHome(people):
     df = pd.read_csv(filePath)
 
     for index, row in df.iterrows():
-      if "ONLINE PAYMENT" in row["Description"]:
+      if "ONLINE PAYMENT" in row["Description"] or "MOBILE PAYMENT - THANK YOU" in row["Description"]:
         self.bankObj.payments += row["Amount"]
         continue
-      
+
       descriptionArray = row["Description"].split(" ")
       descriptionArray = [item for item in descriptionArray if item != '']
       while descriptionArray[0] == "AplPay" or descriptionArray[0] == "UPSIDE*" or descriptionArray[0] == "TST*":
@@ -134,4 +134,6 @@ class stevenLuHome(people):
 
       month, date, year = row["Date"].split("/")
       self.transactionList.append([f'{month}/{date}', category, detail, amount])
+
+      return
   

@@ -36,6 +36,10 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Paninis", amount
   if textArray[0] == "TARGET":
     return "日常用品", "Target", amount
+  if textArray[0] == "MARC'S":
+    return "青菜水果", "Marc's", amount
+  if textArray[0] == "RSVP":
+    return "休閒娛樂", "RSVP", amount
 
   if len(textArray) == 1:
     return False, False, amount
@@ -98,6 +102,28 @@ def expensesHandler(textArray, amount):
     return "休閒娛樂", "Rittman Orchard", amount
   if textArray[0] == "CAFE" and textArray[1] == "MARK":
     return "點心飲料", "Cafe Mark", amount
+  if textArray[0] == "GIANT" and textArray[1] == "EAGLE":
+    return "青菜水果", "Giant Eagle", amount
+  if textArray[0] == "KYURAMEN" and textArray[1] == "(STRSTRONGSVILLE":
+    return "餐飲", "KyuRamen", amount
+  if textArray[0] == "UNITED" and textArray[1] == "AIRLINES":
+    return "生活開銷", "United Airlines", amount
+  if textArray[0] == "NOODLE" and textArray[1] == "KING":
+    return "餐飲", "Noodle King", amount
+  if textArray[0] == "SAKURA" and textArray[1] == "SUSHI" and "OH" in textArray:
+    return "餐飲", "Sakura Sushi", amount
+  if textArray[0] == "PANERA" and textArray[1] == "BREAD":
+    return "餐飲", "Panera Bread", amount
+  if textArray[0] == "CEDAR" and textArray[1] == "POINT":
+    return "休閒娛樂", "Cedar Point", amount
+  if textArray[0] == "APPLE" and (textArray[1] == "STORE" or textArray[1] == "ONLINE"):
+    return "通訊費", "Apple Store", amount
+  if textArray[0] == "SAM'S" and textArray[1] == "CLUB":
+    return "青菜水果", "Sam's Club", amount
+  if textArray[0] == "GET" and textArray[1] == "GO":
+    return "交通工具", "Gas", amount
+  if textArray[0] == "NYX=PORTAGE" and textArray[1] == "CGARRETTSVILLE":
+    return "生活開銷", "Printing", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -108,6 +134,14 @@ def expensesHandler(textArray, amount):
     return "點心飲料", "Kung Fu Tea", amount
   if textArray[0] == "ROUTE" and textArray[1] == "220" and textArray[2] == "DINER":
     return "餐飲", "Route 220 Diner", amount
+  if textArray[0] == "A" and textArray[1] == "PLUS" and textArray[2] == "CRAB":
+    return "餐飲", "A Plus Crab", amount
+  if textArray[0] == "STOW" and textArray[1] == "SOCCER" and textArray[2] == "CLUB":
+    return "養育費", "Stow Soccer Club", amount
+  if textArray[0] == "TINK" and textArray[1] == "HOLL" and textArray[2] == "ENTERPRISECLEVELAND":
+    return "青菜水果", "Tink Holl Enterprise", amount
+  if textArray[0] == "STOW-MUNOE" and textArray[1] == "FALLS" and textArray[2] == "BOOSTOW":
+    return "餐飲", "Game dining", amount
 
   if len(textArray) == 3:
     return False, False, amount
@@ -118,7 +152,11 @@ def expensesHandler(textArray, amount):
     return "餐飲", "K-Pot Korean BBQ", amount
   if textArray[0] == "SP" and textArray[1] == "MAEVERLY" and textArray[2] == "STOW" and textArray[3] == "OH":
     return "治裝費", "Maeve", amount
-
+  if textArray[0] == "TOMINI" and textArray[1] == "LLC" and textArray[2] == "Stow" and textArray[3] == "OH":
+    return "餐飲", "Phoenix Express", amount
+  if textArray[0] == "PARK" and textArray[1] == "TO" and textArray[2] == "SHOP" and textArray[3] == "CLEVELAND":
+    return "青菜水果", "Park to Shop", amount
+  
   if len(textArray) == 4:
     return False, False, amount
 
@@ -128,6 +166,23 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Gogi En K", amount
   if textArray[0] == "THE" and textArray[1] == "CAFE" and textArray[2] == "IN" and textArray[3] == "SSTOW":
     return "餐飲", "The Cafe In Stow", amount
+  if textArray[0] == "AMEX" and textArray[1] == "Hilton" and textArray[2] == "Honors" and textArray[3] == "Aspire" and textArray[4] == "Flight" and textArray[5] == "Credit":
+    return "休閒娛樂", "AMEX Hilton Flight Credit", amount
+  if textArray[0] == "MIDWAY" and textArray[1] == "TWIN" and textArray[2] == "DRIVE" and textArray[3] == "INRAVENNA":
+    return "餐飲", "Midway Twin Drive In", amount
 
   # if didn't find the category, return False
   return False, False, amount
+
+
+# ["SAM'S", 'CLUB', '4750', '4750CUYAHOGA', 'FALLS', 'OH'] 73.5
+# ['GET', 'GO', 'STOW', 'OH'] 14.69
+# ['STOW', 'SOCCER', 'CLUB', 'INCSTOW', 'OH'] 150.0
+# ['TOMINI', 'LLC', 'Stow', 'OH'] 38.5
+# ['MOBILE', 'PAYMENT', '-', 'THANK', 'YOU'] -731.62
+# ['RSVP', 'NO.', '36', 'STOW', 'OH'] 12.27
+# ['STOW-MUNOE', 'FALLS', 'BOOSTOW', 'OH'] 18.0
+# ['NYX=PORTAGE', 'CGARRETTSVILLE', 'OH'] 0.5
+# ['NYX=PORTAGE', 'CGARRETTSVILLE', 'OH'] 0.5
+# ['PARK', 'TO', 'SHOP', 'CLEVELAND', 'OH'] 49.94
+# ['TINK', 'HOLL', 'ENTERPRISECLEVELAND', 'OH'] 38.01
