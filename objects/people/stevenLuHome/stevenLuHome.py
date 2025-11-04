@@ -134,6 +134,4 @@ class stevenLuHome(people):
 
       month, date, year = row["Date"].split("/")
       self.transactionList.append([f'{month}/{date}', category, detail, amount])
-
-      return
   

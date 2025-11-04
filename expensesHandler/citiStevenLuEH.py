@@ -32,6 +32,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Puccini", amount
   if textArray[0] == "WALGREENS":
     return "生活開銷", "Walgreens", amount
+  if textArray[0] == "DUNKIN":
+    return "點心飲料", "Dunkin Donuts", amount
 
   if len(textArray) == 1:
     return False, False, 0.0
@@ -88,6 +90,8 @@ def expensesHandler(textArray, amount):
     return "生活開銷", "Georgia Tech", amount
   if textArray[0] == "CAM" and textArray[1] == "ASIA" and textArray[2] == "SUPERMARKET":
     return "青菜水果", "Cam Asia Supermarket", amount
+  if textArray[0] == "SP" and textArray[1] == "META" and textArray[2] == "STORE":
+    return "生活開銷", "Meta Store", amount
 
   if len(textArray) == 3:
     return False, False, 0.0
@@ -96,6 +100,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "The Cafe in Stow", amount
   if textArray[0] == "Merchant" and textArray[1] == "Offers" and textArray[2] == "Credit" and textArray[3] == "NY":
     return "休閒娛樂", "Citi Merchant Offers", amount
+  if textArray[0] == "REF" and textArray[1] == "CITI" and textArray[2] == "TRAVEL" and textArray[3] == "HOTEL9":
+    return "休閒娛樂", "Citi Travel Hotel", amount
 
 
   if len(textArray) == 4:
