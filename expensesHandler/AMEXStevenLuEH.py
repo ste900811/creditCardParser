@@ -40,7 +40,15 @@ def expensesHandler(textArray, amount):
     return "青菜水果", "Marc's", amount
   if textArray[0] == "RSVP":
     return "休閒娛樂", "RSVP", amount
-
+  if textArray[0] == "WALGREENS":
+    return "生活開銷", "Walgreens", amount
+  if textArray[0] == "KOHL'S":
+    return "治裝費", "Kohl's", amount
+  if textArray[0] == "MEIJER":
+    return "日常用品", "Meijer", amount
+  if textArray[0] == "USPS":
+    return "生活開銷", "USPS", amount
+  
   if len(textArray) == 1:
     return False, False, amount
   
@@ -124,6 +132,34 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Gas", amount
   if textArray[0] == "NYX=PORTAGE" and textArray[1] == "CGARRETTSVILLE":
     return "生活開銷", "Printing", amount
+  if textArray[0] == "TENSUKE" and textArray[1] == "MARKEColumbus":
+    return "青菜水果", "Tensuke Market", amount
+  if textArray[0] == "RAISING" and textArray[1] == "CANESCUYAHOGA":
+    return "餐飲", "Raising Cane's", amount
+  if textArray[0] == "AMAZON" and textArray[1] == "MARKETPLACE":
+    return "日常用品", "Amazon", amount
+  if textArray[0] == "SZECHUAN" and textArray[1] == "GOURKENT":
+    return "餐飲", "Szechuan Gourmet", amount
+  if textArray[0] == "SKYLINE" and textArray[1] == "CHILISTOW":
+    return "餐飲", "Skyline Chili", amount
+  if textArray[0] == "CORNERSTONE" and textArray[1] == "MARKET":
+    return "青菜水果", "Cornerstone Market", amount
+  if textArray[0] == "SUSHIEN" and textArray[1] == "TWINSBURG":
+    return "餐飲", "Sushien", amount
+  if textArray[0] == "METROPARKS" and textArray[1] == "ZOCLEVELAND":
+    return "休閒娛樂", "Metroparks Zoo", amount
+  if textArray[0] == "PY" and textArray[1] == "*ANOTHER":
+    return "餐飲", "Another Broken Egg", amount
+  if textArray[0] == "NEW" and textArray[1] == "SAMS.COM":
+    return "日常用品", "Sams.com", amount
+  if textArray[0] == "GOGI" and textArray[1] == "EN":
+    return "餐飲", "Gogi En", amount
+  if textArray[0] == "ANANA" and textArray[1] == "FAMILY,CLEVELAND":
+    return "餐飲", "Anana Family", amount
+  if textArray[0] == "DD" and textArray[1] == "*WUSHILANDSAN":
+    return "點心飲料", "Wu Shi Land", amount
+  if textArray[0] == "CHENGDU" and textArray[1] == "GOURMET":
+    return "餐飲", "Chengdu Gourmet", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -142,6 +178,10 @@ def expensesHandler(textArray, amount):
     return "青菜水果", "Tink Holl Enterprise", amount
   if textArray[0] == "STOW-MUNOE" and textArray[1] == "FALLS" and textArray[2] == "BOOSTOW":
     return "餐飲", "Game dining", amount
+  if textArray[0] == "QUEST" and textArray[1] == "DIAG" and textArray[2] == "VENTURE":
+    return "生活開銷", "Quest Diagnostics", amount
+  if textArray[0] == "MED*UH" and textArray[1] == "PORTAGSHAKER" and textArray[2] == "HEIGHTS":
+    return "生活開銷", "UH Portage", amount
 
   if len(textArray) == 3:
     return False, False, amount
@@ -156,6 +196,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Phoenix Express", amount
   if textArray[0] == "PARK" and textArray[1] == "TO" and textArray[2] == "SHOP" and textArray[3] == "CLEVELAND":
     return "青菜水果", "Park to Shop", amount
+  if textArray[0] == "LI" and textArray[1] == "WAH" and textArray[2] == "ASIA" and textArray[3] == "PLAZA.":
+    return "餐飲", "Li Wah Asia Plaza", amount
   
   if len(textArray) == 4:
     return False, False, amount
@@ -175,14 +217,22 @@ def expensesHandler(textArray, amount):
   return False, False, amount
 
 
-# ["SAM'S", 'CLUB', '4750', '4750CUYAHOGA', 'FALLS', 'OH'] 73.5
-# ['GET', 'GO', 'STOW', 'OH'] 14.69
-# ['STOW', 'SOCCER', 'CLUB', 'INCSTOW', 'OH'] 150.0
-# ['TOMINI', 'LLC', 'Stow', 'OH'] 38.5
-# ['MOBILE', 'PAYMENT', '-', 'THANK', 'YOU'] -731.62
-# ['RSVP', 'NO.', '36', 'STOW', 'OH'] 12.27
-# ['STOW-MUNOE', 'FALLS', 'BOOSTOW', 'OH'] 18.0
-# ['NYX=PORTAGE', 'CGARRETTSVILLE', 'OH'] 0.5
-# ['NYX=PORTAGE', 'CGARRETTSVILLE', 'OH'] 0.5
-# ['PARK', 'TO', 'SHOP', 'CLEVELAND', 'OH'] 49.94
-# ['TINK', 'HOLL', 'ENTERPRISECLEVELAND', 'OH'] 38.01
+# ['QUEST', 'DIAG', 'VENTURE', '833-387-0254', 'PA'] 8.79
+# ['SZECHUAN', 'GOURKENT', 'OH'] 32.9
+# ['MED*UH', 'PORTAGSHAKER', 'HEIGHTS', 'OH'] 3.07
+# ['WALGREENS', '#42STOW', 'OH'] 0.42
+# ['SUSHIEN', 'TWINSBURG', 'OH'] 42.14
+# ['SKYLINE', 'CHILISTOW', 'OH'] 12.0
+# ['CORNERSTONE', 'MARKET', 'AMUNROE', 'FALLS', 'OH'] 19.53
+# ["KOHL'S", 'STOW', 'OH'] 40.54
+# ['MEIJER', 'STORE', 'STOW', 'OH'] 9.98
+# ['METROPARKS', 'ZOCLEVELAND', 'OH'] 5.0
+# ['USPS', 'PO', '38203STOW', 'OH'] 24.0
+# ['PY', '*ANOTHER', 'BROKEN', 'ESTREETSBORO', 'OH'] 62.41
+# ['WALGREENS', '#42STOW', 'OH'] 0.42
+# ['NEW', 'SAMS.COM', 'MEM#627TEMPLE', 'TX'] 15.0
+# ['GOGI', 'EN', 'SOLON', 'OH'] 241.48
+# ['ANANA', 'FAMILY,CLEVELAND', 'OH'] 11.55
+# ['LI', 'WAH', 'ASIA', 'PLAZA.', '0CLEVELAND', 'OH'] 114.7
+# ['DD', '*WUSHILANDSAN', 'FRANCISCO', 'CA'] 14.86
+# ['CHENGDU', 'GOURMET', '00-0PITTSBURGH', 'PA'] 74.45
