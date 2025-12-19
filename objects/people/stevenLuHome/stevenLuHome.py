@@ -91,8 +91,7 @@ class stevenLuHome(people):
 
       descriptionArray = row["Description"].split(" ")
       descriptionArray = [item for item in descriptionArray if item != '']
-      while descriptionArray[0] == "AplPay" or descriptionArray[0] == "UPSIDE*" or descriptionArray[0] == "TST*":
-        descriptionArray = descriptionArray[1:]
+      descriptionArray = self.filterOutPaymentsMethod(descriptionArray)
         
       category, detail, amount = amexEH(descriptionArray, row["Amount"])
 
@@ -133,5 +132,10 @@ class stevenLuHome(people):
         continue
 
       month, date, year = row["Date"].split("/")
-      self.transactionList.append([f'{month}/{date}', category, detail, amount])
+      if pd.isna(row["Debit"]) == False:
+        self.transactionList.append([f'{month}/{date}', category, detail, amount])    
+      elif pd.isna(row["Credit"]) == False:
+        self.transactionList.append([f'{month}/{date}', category, detail, -amount])
+      else:
+        assert False, "processCitiCSV failed: Neither Debit nor Credit has value"
   

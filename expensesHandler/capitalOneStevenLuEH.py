@@ -287,6 +287,10 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Dairy Queen", amount
   if textArray[0] == "AVIS" and textArray[1] == "RENT-A-CAR":
     return "休閒娛樂", "Avis", amount
+  if textArray[0] == "SAFELITE" and textArray[1] == "AUTOGLASS":
+    return "交通工具", "Safelite Auto Glass", amount
+  if textArray[0] == "CEDAR" and textArray[1] == "POINT":
+    return "休閒娛樂", "Cedar Point", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -374,6 +378,10 @@ def expensesHandler(textArray, amount):
     return "生活開銷", "The UPS Store", amount
   if textArray[0] == "ONLINE" and textArray[1] == "LIQUIDATION" and textArray[2] == "AUC":
     return "日常用品", "Online Liquidation Auction", amount
+  if textArray[0] == "KINGS" and textArray[1] == "ISLAND" and textArray[2] == "FOOD":
+    return "餐飲", "Kings Island Food", amount
+  if textArray[0] == "ERAWAN" and textArray[1] == "THAI" and textArray[2] == "KITCHEN":
+    return "餐飲", "Erawan Thai Kitchen", amount
   
   if len(textArray) == 3:
     return False, False, amount

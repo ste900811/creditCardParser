@@ -35,6 +35,6 @@ class CapitalOne(Banks):
           
         # Find the balance in the PDF file
         if line[:36] == "YI-YANG LU #1052: Total Transactions":
-          return float(line[38:39]+line[40:46])
+          return float(line.split("$")[1].replace(",", ""))
 
     assert False, "CapitalOne: getStatmentPDFBalance: No balance found in PDF file"

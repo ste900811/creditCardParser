@@ -7,7 +7,8 @@ class people:
     self.bankObj = bankObj
 
   def filterOutPaymentsMethod(self, array):
-    while array[0] == "TST*" or array[0] == "AplPay" or array[0] == "TN" or array[0] == "SQ":
+    while array[0] == "TST*" or array[0] == "AplPay" or array[0] == "TN" or array[0] == "SQ" \
+      or array[0] == "GDP*" or array[0] == "UPSIDE*" or array[0] == "DD":
       array.pop(0)
 
     if array[0].startswith("*"):

@@ -34,6 +34,16 @@ def expensesHandler(textArray, amount):
     return "生活開銷", "Walgreens", amount
   if textArray[0] == "DUNKIN":
     return "點心飲料", "Dunkin Donuts", amount
+  if textArray[0] == "USPS":
+    return "生活開銷", "USPS", amount
+  if textArray[0] == "TARGET.COM":
+    return "日常用品", "Target", amount
+  if textArray[0] == "BLACKLANE":
+    return "交通工具", "Blacklane", amount
+  if textArray[0] == "PHOENIX-EXPRESS":
+    return "餐飲", "Phoenix Express", amount
+  if textArray[0].startswith("BESTBUYCOM"):
+    return "日常用品", "Best Buy", amount
 
   if len(textArray) == 1:
     return False, False, 0.0
@@ -72,6 +82,16 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Umami Noodle", amount
   if textArray[0] == "OLIVE" and textArray[1] == "GARDEN":
     return "餐飲", "Olive Garden", amount
+  if textArray[0] == "BELLE'S" and textArray[1] == "BREAD":
+    return "點心飲料", "Belle's Bread", amount
+  if textArray[0] == "TENSUKE" and textArray[1] == "RAMEN":
+    return "餐飲", "Tensuke Ramen", amount
+  if textArray[0] == "TPA" and textArray[1] == "Paintball":
+    return "休閒娛樂", "TPA Paintball", amount
+  if textArray[0] == "GET" and textArray[1] == "GO":
+    return "交通工具", "Gas", amount
+  if textArray[0] == "CIRCLE" and textArray[1] == "K":
+    return "交通工具", "Gas", amount
 
   if len(textArray) == 2:
     return False, False, 0.0
@@ -92,7 +112,17 @@ def expensesHandler(textArray, amount):
     return "青菜水果", "Cam Asia Supermarket", amount
   if textArray[0] == "SP" and textArray[1] == "META" and textArray[2] == "STORE":
     return "生活開銷", "Meta Store", amount
-
+  if textArray[0] == "KENT" and textArray[1] == "FOOD" and textArray[2] == "MARKET":
+    return "青菜水果", "Kent Food Mart", amount
+  if textArray[0] == "LIBRTY" and textArray[1] == "ST" and textArray[2] == "DLY":
+    return "交通工具", "Liberty St Daily", amount
+  if textArray[0] == "JC" and textArray[1] == "ECO" and textArray[2] == "LAUNDRY":
+    return "休閒娛樂", "JC Eco Laundry", amount
+  if textArray[0] == "PATH" and textArray[1] == "TAPP" and textArray[2] == "PAYGO":
+    return "交通工具", "Path Tapp Paygo", amount
+  if textArray[0] == "SUPER" and textArray[1] == "BOBA" and textArray[2] == "TEA":
+    return "點心飲料", "Super Boba Tea", amount
+  
   if len(textArray) == 3:
     return False, False, 0.0
   
@@ -102,8 +132,9 @@ def expensesHandler(textArray, amount):
     return "休閒娛樂", "Citi Merchant Offers", amount
   if textArray[0] == "REF" and textArray[1] == "CITI" and textArray[2] == "TRAVEL" and textArray[3] == "HOTEL9":
     return "休閒娛樂", "Citi Travel Hotel", amount
-
-
+  if textArray[0] == "$100" and textArray[1] == "Credit" and textArray[2] == "with" and textArray[3] == "Blacklane":
+    return "交通工具", "Blacklane", amount
+  
   if len(textArray) == 4:
     return False, False, 0.0
 
