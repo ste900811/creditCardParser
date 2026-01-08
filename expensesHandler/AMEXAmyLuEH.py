@@ -304,6 +304,12 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "DUTCH" and textArray[1] == "WONDERLLANCASTER" and "PA" in textArray:
     return "Dining"
+  if textArray[0] == "COCA" and textArray[1] == "COLA":
+    return "Dining"
+  if textArray[0] == "METROPOLIS" and textArray[1] == "PARKING":
+    return "Parking"
+  if textArray[0] == "CHEESECAKE" and textArray[1] == "TYSONS":
+    return "Dining"
   
   if len(textArray) == 2:
     return False
@@ -408,6 +414,8 @@ def expensesHandler(textArray, amount):
     return "Dining"
   if textArray[0] == "YARD" and textArray[1] == "HOUSE" and textArray[2] == "01MCLEAN":
     return "Dining"
+  if textArray[0] == "1350" and textArray[1] == "CHAIN" and textArray[2] == "BRIDGE":
+    return "Gas"
 
   if len(textArray) == 3:
     return False
@@ -452,6 +460,8 @@ def expensesHandler(textArray, amount):
     return "Grocery"
   if textArray[0] == "WEGMANS" and textArray[1] == "TYSONS" and textArray[2] == "CRNR" and textArray[3] == "TYSONS":
     return "Grocery"
+  if textArray[0] == "D" and textArray[1] == "&" and textArray[2] == "V" and textArray[3] == "SERVICE":
+    return "Gas"
   
   if len(textArray) == 4:
     return False
