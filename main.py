@@ -3,18 +3,20 @@ import math
 
 from mainFunctions.createObjects import createObjects
 
-def main(bankName, cardType, nameOnStatement, statementDate):
+def main(bankName, cardType, nameOnStatement, statementDate_cardNum):
+  statementDate, cardNum = statementDate_cardNum.split("_")[0], statementDate_cardNum.split("_")[1]
   print(f"Bank Name: {bankName}")
   print(f"Card Type: {cardType}")
   print(f"Name on Statement: {nameOnStatement}")
-  print(f"Statement Date: {statementDate}", end="\n\n")
+  print(f"Statement Date: {statementDate}")
+  print(f'Card Last 4 Digits: {cardNum}', end="\n\n")
 
   # create the object of the bank and people class
-  bankObj, personObj = createObjects(bankName, cardType, statementDate, nameOnStatement)
+  bankObj, personObj = createObjects(bankName, cardType, statementDate, nameOnStatement, cardNum)
 
   # get the statement balance from PDF file
   try:
-    pdfFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate}.pdf'
+    pdfFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate_cardNum}.pdf'
     bankObj.statmentPDFBalance = bankObj.getStatmentPDFBalance(pdfFilePath)
   except FileNotFoundError as e:
     print(e)
@@ -22,7 +24,7 @@ def main(bankName, cardType, nameOnStatement, statementDate):
   
   # get the statement balance from CSV file
   try:
-    csvFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate}.csv'
+    csvFilePath = f'./statements/{nameOnStatement}/{bankName}/{cardType}/{statementDate_cardNum}.csv'
     bankObj.statmentCSVBalance = personObj.getStatmentCSVBalance(csvFilePath, bankName)
   except FileNotFoundError as e:
     print(e)
@@ -55,6 +57,16 @@ def main(bankName, cardType, nameOnStatement, statementDate):
         Payments amount: {bankObj.paymentsAmount}\n \
         Credits amount: {bankObj.creditsAmount}\n \
         Purchases amount: {bankObj.purchasesAmount}"
+  elif bankName == "USBank":
+    pass
+    # assert math.isclose(bankObj.newBalance, bankObj.statmentCSVBalance), \
+    # f'bankObj.statmentPDFBalance: {bankObj.statmentPDFBalance}\n \
+    #   bankObj.statmentCSVBalance: {bankObj.statmentCSVBalance}\n \
+    #   bankObj.previousBalance: {bankObj.previousBalance}\n \
+    #   bankObj.payments: {bankObj.payments}\n \
+    #   bankObj.otherCredits: {bankObj.otherCredits}\n \
+    #   bankObj.purchases: {bankObj.purchases}\n \
+    #   bankObj.newBalance: {bankObj.newBalance}'
   else:
     assert False, f"Bank not supported: {bankName}"
 
@@ -72,6 +84,6 @@ if __name__ == "__main__":
     print("Command line arguments too many")
     sys.exit(1)
 
-  bankName, cardType, nameOnStatement, statementDate = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-  main(bankName, cardType, nameOnStatement, statementDate)
+  bankName, cardType, nameOnStatement, statementDate_cardNum = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+  main(bankName, cardType, nameOnStatement, statementDate_cardNum)
   print("Done")

@@ -17,6 +17,8 @@ bankName and cardType:
     AMEXGoldCard
   Citi
     strataElite
+  USBank
+    BusinessTripleCashRewards  
 
 name:
   amyLu

@@ -29,7 +29,3 @@ class AMEX(Banks):
       return self.PDFNewBalance
 
     assert False, f'{self.bankName}_{self.cardType}: getStatmentPDFBalance: No balance found in PDF file'
-
-  def PDFInfoCheck(self):
-    return self.cardLast5Digits != "" and self.PDFNewBalance != -99999.99 and self.PDFPreviousBalance != -99999.99
-

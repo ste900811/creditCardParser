@@ -2,13 +2,13 @@ from abc import ABC, abstractmethod
 import pandas as pd
 
 class Banks:
-  def __init__(self, bankName, statementDate):
-    self.bankName = None
-    self.statmentPDFBalance = -99999.99
-    self.statmentCSVBalance = -99999.99
-    self.StatementDate = statementDate
+  def __init__(self, bankName, cardType, statementDate, cardNum):
     self.bankName = bankName
-    self.cardLast5Digits = ""
+    self.cardType = cardType
+    self.StatementDate = statementDate
+    self.cardLast4Digits = cardNum
+    self.statmentPDFBalance = None
+    self.statmentCSVBalance = None
     
   @abstractmethod
   def getStatmentPDFBalance(self, filePath):
@@ -16,4 +16,8 @@ class Banks:
 
   @abstractmethod
   def getStatmentCSVBalance(self, filePath):
+    pass
+
+  @abstractmethod
+  def PDFInfoCheck(self):
     pass
