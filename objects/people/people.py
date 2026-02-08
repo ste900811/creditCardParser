@@ -7,7 +7,7 @@ class people:
     self.bankObj = bankObj
 
   def filterOutPaymentsMethod(self, array):
-    array0Set = {"TST*", "AplPay", "TN", "SQ", "GDP*", "UPSIDE*", "DD", "SNACK*", ""}
+    array0Set = {"TST*", "AplPay", "TN", "SQ", "GDP*", "UPSIDE*", "DD", "SNACK*", "PY", "CS", ""}
     startWithTuple = ("TST*", "UEP*", "FIV*")
     while array[0] in array0Set or array[0].startswith(startWithTuple):
       if array[0].startswith(startWithTuple) :

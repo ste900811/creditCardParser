@@ -2,9 +2,8 @@ from objects.banks.banks import Banks
 from PyPDF2 import PdfReader
 
 class CapitalOne(Banks):
-  def __init__(self, bankName, cardType, statementDate):
-    super().__init__(bankName, statementDate)
-    self.cardType = cardType
+  def __init__(self, bankName, cardType, statementDate, cardNum):
+    super().__init__(bankName, cardType, statementDate, cardNum)
     self.PDFCreditsAmount = 0.0
 
   def getStatmentPDFBalance(self, filePath):

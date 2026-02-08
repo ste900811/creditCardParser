@@ -63,18 +63,19 @@ class stevenLuHome(people):
     df = pd.read_csv(filePath)
 
     for index, row in df.iterrows():
+      description = self.filterOutPaymentsMethod(row["Description"].split(" "))
       if row["Card No."] == 1052 and row["Credit"] > 0:
-        category, detail, amount = captialOneEH(row["Description"].split(" "), -row["Credit"])
+        category, detail, amount = captialOneEH(description, -row["Credit"])
         csvTotalAmount += amount
       elif row["Card No."] == 1052 and row["Debit"] > 0:
-        category, detail, amount = captialOneEH(row["Description"].split(" "), row["Debit"])
+        category, detail, amount = captialOneEH(description, row["Debit"])
         csvTotalAmount += amount
       else:
         continue
     
       if category == False:
         # print(category, detail)
-        print(row["Description"].split(" "), row["Debit"], row["Credit"])
+        print(description, row["Debit"], row["Credit"])
         continue
 
       month, date = row["Transaction Date"][5:].split("-")
@@ -125,11 +126,11 @@ class stevenLuHome(people):
       if pd.isna(row["Debit"]) == False:
         category, detail, amount = citiEH(descriptionArray, row["Debit"])
         if category != False:
-          self.bankObj.purchasesAmount += amount
+          self.bankObj.purchasesCSV += amount
       elif pd.isna(row["Credit"]) == False:
         category, detail, amount = citiEH(descriptionArray, -row["Credit"])
         if category != False:
-          self.bankObj.creditsAmount -= amount
+          self.bankObj.creditsCSV -= amount
 
       if category == False:
         print(f'{descriptionArray} {row["Debit"]} {row["Credit"]}')

@@ -1,5 +1,5 @@
 Currently only run on the Windows machine, using below example terminal code to run the main file:
-python main.py discover cashBack stevenLu 250216
+python main.py discover cashBack stevenLu 250216_5671
   discover = name of the bank
   cashBack = credit card type
   stevenLu = credit card holder

@@ -2,12 +2,11 @@ from objects.banks.banks import Banks
 from PyPDF2 import PdfReader
 
 class AMEX(Banks):
-  def __init__(self, bankName, cardType, statementDate):
-    super().__init__(bankName, statementDate)
+  def __init__(self, bankName, cardType, statementDate, cardNum):
+    super().__init__(bankName, cardType, statementDate, cardNum)
     self.creditAmount = 0.0
     self.payments = 0.0
     self.PDFPreviousBalance = -99999.99
-    self.cardType = cardType
 
   def getStatmentPDFBalance(self, filePath):
     # print(f"Getting statement balance from PDF file: {filePath}")

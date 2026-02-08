@@ -44,13 +44,15 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Phoenix Express", amount
   if textArray[0].startswith("BESTBUYCOM"):
     return "日常用品", "Best Buy", amount
+  if textArray[0] == "SUSHIEN":
+    return "餐飲", "Sushi En", amount
 
   if len(textArray) == 1:
     return False, False, 0.0
 
   if textArray[0] == "MEMBERSHIP" and textArray[1] == "FEE":
     return "休閒娛樂", "Citi Membership", amount
-  if textArray[0] == "UEP*LU" and textArray[1] == "CHA":
+  if textArray[0] == "LU" and textArray[1] == "CHA":
     return "點心飲料", "Lu Cha", amount
   if textArray[0] == "DAIRY" and textArray[1] == "QUEEN":
     return "點心飲料", "Dairy Queen", amount
@@ -92,6 +94,10 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Gas", amount
   if textArray[0] == "CIRCLE" and textArray[1] == "K":
     return "交通工具", "Gas", amount
+  if textArray[0] == "YY" and textArray[1] == "TIME":
+    return "餐飲", "YY Time", amount
+  if textArray[0] == "SAVANNAH" and textArray[1] == "PARKING":
+    return "交通工具", "Parking", amount
 
   if len(textArray) == 2:
     return False, False, 0.0

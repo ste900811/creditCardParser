@@ -49,14 +49,14 @@ def main(bankName, cardType, nameOnStatement, statementDate_cardNum):
         Credits amount: {bankObj.creditAmount}'
   elif bankName == "Citi":
     assert math.isclose(bankObj.statmentPDFBalance, 
-                        bankObj.previousBalance + bankObj.creditsAmount \
-                        + bankObj.paymentsAmount + bankObj.purchasesAmount), \
+                        bankObj.previousBalance + bankObj.creditsCSV \
+                        + bankObj.paymentsAmount + bankObj.purchasesCSV), \
       f"{bankObj.bankName}_{bankObj.cardType}: PDF and CSV statement balance do not match\n \
         PDF balance: {bankObj.statmentPDFBalance}\n \
         Previous balance: {bankObj.previousBalance}\n \
         Payments amount: {bankObj.paymentsAmount}\n \
-        Credits amount: {bankObj.creditsAmount}\n \
-        Purchases amount: {bankObj.purchasesAmount}"
+        Credits amount: {bankObj.creditsCSV}\n \
+        Purchases amount: {bankObj.purchasesCSV}"
   elif bankName == "USBank":
     pass
     # assert math.isclose(bankObj.newBalance, bankObj.statmentCSVBalance), \

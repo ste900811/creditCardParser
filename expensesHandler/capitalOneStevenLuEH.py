@@ -96,6 +96,15 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Parking", amount
   if textArray[0] == "ETOLLAVIS":
     return "交通工具", "Toll", amount
+  if textArray[0] == "IHOP":
+    return "餐飲", "IHOP", amount 
+  if textArray[0] == "WALMART.COM":
+    return "日常用品", "Walmart", amount
+  if textArray[0] == "THEKOOP":
+    return "餐飲", "The Koop", amount
+  if textArray[0] == "BP#9597931COGO'S":
+    return "交通工具", "Gas", amount
+
    
   if len(textArray) == 1:
     return False, False, amount
@@ -291,6 +300,20 @@ def expensesHandler(textArray, amount):
     return "交通工具", "Safelite Auto Glass", amount
   if textArray[0] == "CEDAR" and textArray[1] == "POINT":
     return "休閒娛樂", "Cedar Point", amount
+  if textArray[0] == "ASIA" and textArray[1] == "GARDENS":
+    return "餐飲", "Asia Gardens", amount
+  if textArray[0] == "PARK" and textArray[1] == "MOBILE":
+    return "交通工具", "Parking", amount
+  if textArray[0] == "SAVANNAH" and textArray[1] == "PARKING":
+    return "交通工具", "Parking", amount
+  if textArray[0] == "WINGS" and textArray[1] == "ETC.":
+    return "餐飲", "Wings Etc", amount
+  if textArray[0] == "FRONTIER" and textArray[1] == "AIRLINES":
+    return "休閒娛樂", "Frontier Airlines", amount
+  if textArray[0] == "AHRI'S" and textArray[1] == "KITCHEN":
+    return "餐飲", "Ahri's Kitchen", amount
+  if textArray[0] == "STOW" and textArray[1] == "SOCCER":
+    return "養育費", "Stow Soccer Club", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -382,6 +405,10 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Kings Island Food", amount
   if textArray[0] == "ERAWAN" and textArray[1] == "THAI" and textArray[2] == "KITCHEN":
     return "餐飲", "Erawan Thai Kitchen", amount
+  if textArray[0] == "AKAHANA" and textArray[1] == "ASIAN" and textArray[2] == "BISTRO":
+    return "餐飲", "Akahana Asian Bistro", amount
+  if textArray[0] == "LOS" and textArray[1] == "REYES" and textArray[2] == "MEXICAN":
+    return "餐飲", "Los Reyes Mexican", amount
   
   if len(textArray) == 3:
     return False, False, amount
@@ -469,6 +496,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Kintaro", amount
   if textArray[0] == "SQ" and textArray[1] == "*THE" and textArray[2] == "TUNNEL" and textArray[3] == "HOTEL" and textArray[4] == "AND":
     return "點心飲料", "The Tunnel Hotel", amount
+  if textArray[0] == "ETANG" and textArray[1] == "NOODLE" and textArray[2] == "AND" and textArray[3] == "HOT" and textArray[4] == "POT":
+    return "餐飲", "Etang Noodle And Hot Pot", amount
 
 
   # if didn't find the category, return False
