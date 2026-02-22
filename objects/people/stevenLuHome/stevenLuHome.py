@@ -91,7 +91,6 @@ class stevenLuHome(people):
 
     for index, row in df.iterrows():
       if "ONLINE PAYMENT" in row["Description"] or "MOBILE PAYMENT - THANK YOU" in row["Description"]:
-        self.bankObj.payments += row["Amount"]
         continue
 
       descriptionArray = row["Description"].split(" ")

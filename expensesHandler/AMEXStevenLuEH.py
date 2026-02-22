@@ -222,27 +222,10 @@ def expensesHandler(textArray, amount):
     return "休閒娛樂", "AMEX Hilton Flight Credit", amount
   if textArray[0] == "MIDWAY" and textArray[1] == "TWIN" and textArray[2] == "DRIVE" and textArray[3] == "INRAVENNA":
     return "餐飲", "Midway Twin Drive In", amount
+  if textArray[0] == "HILTON" and textArray[1] == "VIRGINIA" and textArray[2] == "BEACVIRGINIA" and textArray[3] == "BCH" and textArray[4] == "VA":
+    return "休閒娛樂", "Hotel", amount
+  if textArray[0] == "AMEX" and textArray[1] == "Hilton" and textArray[2] == "Honors" and textArray[3] == "Aspire" and textArray[4] == "Resort" and textArray[5] == "Credit":
+    return "休閒娛樂", "AMEX Hilton Resort Credit", amount
 
   # if didn't find the category, return False
   return False, False, amount
-
-
-# ['QUEST', 'DIAG', 'VENTURE', '833-387-0254', 'PA'] 8.79
-# ['SZECHUAN', 'GOURKENT', 'OH'] 32.9
-# ['MED*UH', 'PORTAGSHAKER', 'HEIGHTS', 'OH'] 3.07
-# ['WALGREENS', '#42STOW', 'OH'] 0.42
-# ['SUSHIEN', 'TWINSBURG', 'OH'] 42.14
-# ['SKYLINE', 'CHILISTOW', 'OH'] 12.0
-# ['CORNERSTONE', 'MARKET', 'AMUNROE', 'FALLS', 'OH'] 19.53
-# ["KOHL'S", 'STOW', 'OH'] 40.54
-# ['MEIJER', 'STORE', 'STOW', 'OH'] 9.98
-# ['METROPARKS', 'ZOCLEVELAND', 'OH'] 5.0
-# ['USPS', 'PO', '38203STOW', 'OH'] 24.0
-# ['PY', '*ANOTHER', 'BROKEN', 'ESTREETSBORO', 'OH'] 62.41
-# ['WALGREENS', '#42STOW', 'OH'] 0.42
-# ['NEW', 'SAMS.COM', 'MEM#627TEMPLE', 'TX'] 15.0
-# ['GOGI', 'EN', 'SOLON', 'OH'] 241.48
-# ['ANANA', 'FAMILY,CLEVELAND', 'OH'] 11.55
-# ['LI', 'WAH', 'ASIA', 'PLAZA.', '0CLEVELAND', 'OH'] 114.7
-# ['DD', '*WUSHILANDSAN', 'FRANCISCO', 'CA'] 14.86
-# ['CHENGDU', 'GOURMET', '00-0PITTSBURGH', 'PA'] 74.45

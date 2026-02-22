@@ -38,15 +38,12 @@ def main(bankName, cardType, nameOnStatement, statementDate_cardNum):
     assert round(bankObj.statmentPDFBalance, 2) == round(bankObj.statmentCSVBalance, 2), \
       f"Discover: PDF balance: {bankObj.statmentPDFBalance}, CSV balance: {bankObj.statmentCSVBalance}"
   elif bankName == "AMEX":
-    assert math.isclose(bankObj.statmentPDFBalance, 
-                        bankObj.statmentCSVBalance + bankObj.PDFPreviousBalance \
-                        - bankObj.creditAmount + bankObj.payments), \
+    assert math.isclose(bankObj.statmentPDFBalance, bankObj.statmentCSVBalance), \
       f'{bankObj.bankName}_{bankObj.cardType}: PDF and CSV statement balance do not match\n \
         PDF balance: {bankObj.statmentPDFBalance}\n \
         CSV balance: {bankObj.statmentCSVBalance}\n \
-        Previous balance: {bankObj.PDFPreviousBalance}\n \
-        Payments amount: {bankObj.payments}\n \
-        Credits amount: {bankObj.creditAmount}'
+        Previous balance: {bankObj.previousBalance}\n \
+        payments/Credits amount: {bankObj.paymentsCredits}'
   elif bankName == "Citi":
     assert math.isclose(bankObj.statmentPDFBalance, 
                         bankObj.previousBalance + bankObj.creditsCSV \

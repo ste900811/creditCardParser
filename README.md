@@ -3,7 +3,7 @@ python main.py discover cashBack stevenLu 250216_5671
   discover = name of the bank
   cashBack = credit card type
   stevenLu = credit card holder
-  250216 = date of the creaditcard statment
+  250216_5671 = date of the creaditcard statment_last 4 card digits
 
 bankName and cardType:
   capitalOne
