@@ -54,6 +54,12 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Upside", amount
   if textArray[0] == "ADIDAS":
     return "治裝費", "Adidas", amount
+  if textArray[0] == "KROGER":
+    return "日常用品", "Kroger", amount
+  if textArray[0] == "TOPGOLF":
+    return "休閒娛樂", "Topgolf", amount
+  if textArray[0] == "SHEETZ":
+    return "交通工具", "Gas", amount
   
   if len(textArray) == 1:
     return False, False, amount
@@ -166,6 +172,26 @@ def expensesHandler(textArray, amount):
     return "點心飲料", "Wu Shi Land", amount
   if textArray[0] == "CHENGDU" and textArray[1] == "GOURMET":
     return "餐飲", "Chengdu Gourmet", amount
+  if textArray[0] == "TENSUKE" and textArray[1] == "RAMENColumbus":
+    return "餐飲", "Tensuke Ramen", amount
+  if textArray[0] == "BELLE'S" and textArray[1] == "BREAD":
+    return "點心飲料", "Belle's Bread", amount
+  if textArray[0] == "MARCOS" and textArray[1] == "PIZZA":
+    return "餐飲", "Marco's Pizza", amount
+  if textArray[0] == "KIMS" and textArray[1] == "ORIENTALCLEVELAND":
+    return "青菜水果", "Kims Oriental", amount
+  if textArray[0] == "KPOT" and textArray[1] == "KOREAN":
+    return "餐飲", "K-Pot Korean BBQ", amount
+  if textArray[0] == "MARKET" and textArray[1] == "DISTRICUYAHOGA":
+    return "日常用品", "Giant Eagle", amount
+  if textArray[0] == "CBS" and textArray[1] == "0029CLEVELAND":
+    return "休閒娛樂", "CBS", amount
+  if textArray[0] == "MARUICHI" and textArray[1] == "GROCROCKVILLE":
+    return "餐飲", "Maruichi Grocery", amount
+  if textArray[0] == "STUDENTREASURES" and textArray[1] == "PUBLTOPEKA":
+    return "養育費", "School Supply", amount
+  if textArray[0] == "MOGE" and textArray[1] == "TEE":
+    return "點心飲料", "Moge Tea", amount
 
   if len(textArray) == 2:
     return False, False, amount
@@ -190,6 +216,14 @@ def expensesHandler(textArray, amount):
     return "生活開銷", "UH Portage", amount
   if textArray[0] == "KENT" and textArray[1] == "FOOD" and textArray[2] == "MARKET":
     return "青菜水果", "Kent Food Market", amount
+  if textArray[0] == "KUNG" and textArray[1] == "FU" and textArray[2] == "TEA":
+    return "點心飲料", "Kung Fu Tea", amount
+  if textArray[0] == "ROSE" and textArray[1] == "TEA" and textArray[2] == "CAFEPITTSBURGH":
+    return "餐飲", "Rose Tea Cafe", amount
+  if textArray[0] == "WUSHILAND" and textArray[1] == "-" and (textArray[2] == "CPITTSBURGH" or textArray[2] == "CMU"):
+    return "點心飲料", "Wu Shi Land", amount
+  if textArray[0] == "PANCHO" and textArray[1] == "AND" and textArray[2] == "LEFTYS":
+    return "餐飲", "Pancho and Leftys", amount
 
   if len(textArray) == 3:
     return False, False, amount
@@ -208,6 +242,8 @@ def expensesHandler(textArray, amount):
     return "餐飲", "Li Wah Asia Plaza", amount
   if textArray[0] == "CATHAY" and textArray[1] == "PACIFIC" and textArray[2] == "AIRWATAIPEI" and textArray[3] == "TW":
     return "交通工具", "Cathay Pacific Airways", amount
+  if textArray[0] == "HONG" and textArray[1] == "KONG" and textArray[2] == "925STOW" and textArray[3] == "OH":
+    return "餐飲", "Hong Kong", amount
   
   if len(textArray) == 4:
     return False, False, amount
@@ -226,6 +262,24 @@ def expensesHandler(textArray, amount):
     return "休閒娛樂", "Hotel", amount
   if textArray[0] == "AMEX" and textArray[1] == "Hilton" and textArray[2] == "Honors" and textArray[3] == "Aspire" and textArray[4] == "Resort" and textArray[5] == "Credit":
     return "休閒娛樂", "AMEX Hilton Resort Credit", amount
+  if textArray[0] == "BOWL" and textArray[1] == "OF" and textArray[2] == "PHO" and textArray[3] == "WOODMERE":
+    return "餐飲", "Bowl of Pho", amount
+  if textArray[0] == "6717" and textArray[1] == "OLD" and textArray[2] == "DOMINION" and textArray[3] == "DRMC" and textArray[4] == "LEAN" and textArray[5] == "VA":
+    return "交通工具", "Gas", amount
 
   # if didn't find the category, return False
   return False, False, amount
+
+
+# ['PANCHO', 'AND', 'LEFTYS', '06STOW', 'OH'] 73.4
+# ['KPOT', 'KOREAN', 'BBQCANTON', 'OH'] 52.27
+# ['TOPGOLF', 'AKRON', 'OH'] 14.34
+# ['MARKET', 'DISTRICUYAHOGA', 'FALL', 'OH'] 28.36
+# ['CBS', '0029CLEVELAND', 'OH'] 6.75
+# ['MARKET', 'DISTRICUYAHOGA', 'FALL', 'OH'] 3.99
+# ['MARKET', 'DISTRICUYAHOGA', 'FALL', 'OH'] 4.49
+# ['6717', 'OLD', 'DOMINION', 'DRMC', 'LEAN', 'VA'] 13.61
+# ['MARUICHI', 'GROCROCKVILLE', 'MD'] 50.89
+# ['SHEETZ', 'FREDERICK', 'MD'] 4.23
+# ['STUDENTREASURES', 'PUBLTOPEKA', 'KS'] 30.95
+# ['MOGE', 'TEE', 'NW', 'WASHINGTON', 'DC'] 41.65
